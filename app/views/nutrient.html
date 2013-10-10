@@ -48,10 +48,10 @@
   <table class="table">
     <thead>
       <tr>
-        <th>STT</th>
-        <th>Bữa ăn</th>
-        <th>Món ăn</th>
-        <th>Số lượng</th>
+        <th style="width:40px">STT</th>
+        <th style="width:180px">Bữa ăn</th>
+        <th style="width:250px">Món ăn</th>
+        <th style="width:80px">Số lượng</th>
         <th>Năng Lượng Kcal</th>
         <th>Đạm Kcal</th>
         <th>Béo Kcal</th>
@@ -65,10 +65,7 @@
         <td>{{item.time.label}}</td>
         <td>{{item.food.thucan}}</td>
         <td>{{item.quantity}}</td>
-        <td>{{((item.quantity * item.food.dam * 4) 
-            + (item.quantity * item.food.beo * 9) 
-            + (item.quantity * item.food.duong * 4) 
-            + (item.quantity * item.food.vitamin)) | number : 1}}</td>
+        <td>{{item.quantity * item.food.nangluong | number : 1}}</td>
         <td>{{item.quantity * item.food.dam * 4 | number : 1}}</td>
         <td>{{item.quantity * item.food.beo * 9 | number : 1}}</td>
         <td>{{item.quantity * item.food.duong * 4 | number : 1}}</td>
@@ -76,11 +73,11 @@
       </tr>
       <tr>
         <td colspan="4">Năng lượng 1 ngày</td>
-        <td></td>
-        <td>{{menu | total: 'dam'}}</td>
-        <td>{{menu | total: 'beo'}}</td>
-        <td>{{menu | total: 'duong'}}</td>
-        <td>{{menu | total: 'vitamin'}}</td>
+        <td>{{menu | total: 'nangluong' | number : 1}}</td>
+        <td>{{menu | total: 'dam' | number : 1}}</td>
+        <td>{{menu | total: 'beo' | number : 1}}</td>
+        <td>{{menu | total: 'duong' | number : 1}}</td>
+        <td>{{menu | total: 'vitamin' | number : 1}}</td>
       </tr>
       <tr>
         <td colspan="5">Tỉ lệ phần trăm năng lượng trong 1 ngày</td>
@@ -98,26 +95,18 @@
       <div id="wrap">
 	      <div class="infor">
           	<table border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td class="bold w1">Họ và tên </td>
-          <td class="bold w2"> : </td>
-          <td class="w3">{{customer.fullname}}</td>
-          <td class="bold w4">Giới tính :</td>
-          <td class="w4">{{customer.gender}}</td>
-          <td class="bold w5">Tuổi : </td>
-          <td>{{customer.age}} {{test}}</td>
-        </tr>
-        <tr>
-          <td><span class="bold w1">Địa chỉ</span></td>
-          <td><span class="bold w2"> : </span></td>
-          <td colspan="5">{{customer.address}}</td>
-        </tr>
-        <tr>
-          <td><span class="bold w1">Số điện thoại</span></td>
-          <td><span class="bold w2"> : </span></td>
-          <td colspan="5">{{customer.tel}}</td>
-        </tr>
-      </table>
+              <tr>
+                <td class="italic w1">Họ và tên: {{customer.fullname}}</td>
+                <td class="italic w2">Giới tính: {{customer.gender}}</td>
+                <td class="italic w3">Tuổi: {{customer.age}}</td>
+              </tr>
+              <tr>
+                <td class="italic" colspan="3">Địa chỉ: {{customer.address}}</td>
+              </tr>
+              <tr>
+                <td class="italic" colspan="3">Số điện thoại: {{customer.tel}}</td>
+              </tr>
+            </table>
       </div>    
       <div class="infor1">
         <div class="left">
