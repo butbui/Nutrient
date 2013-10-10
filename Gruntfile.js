@@ -341,22 +341,22 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'useminPrepare',
+    //'useminPrepare',
     'concurrent:dist',
-    'autoprefixer',
-    'concat',
+    //'autoprefixer',
+    //'concat',
     'copy:dist',
     'cdnify',
     'ngmin',
-    'cssmin',
-    'uglify',
+    //'cssmin',
+    //'uglify',
     'rev',
-    'usemin'
+    //'usemin'
   ]);
 
   grunt.registerTask('default', [
-    'jshint',
-    'test',
+    //'jshint',
+    //'test',
     'build'
   ]);
 };

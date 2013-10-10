@@ -13,6 +13,7 @@ angular.module('nutrientApp')
     $scope.customer = {gender: 'Nam'};
     // Set default value for Bua an (Sang)
     $scope.meal = {
+      quantity: 1,
       time: $scope.times[0]
     };
     // get food from json
@@ -21,6 +22,11 @@ angular.module('nutrientApp')
     });
     // Add food to list
     $scope.saveFood = function() {
+      if (isEmpty($scope.meal.time) || isEmpty($scope.meal.food) || isEmpty($scope.meal.quantity)) {
+        alert("Xin chọn món ăn và số lượng");
+        return;
+      }
+    
       $scope.menu.push(angular.copy($scope.meal));
       // analysis
       $scope.result = NutrientService.analyseNutrition($scope.menu);
@@ -33,8 +39,12 @@ angular.module('nutrientApp')
 
     $scope.timeChanged = function() {
       console.log('time changed');
-      $scope.foodName = '';
+      $('input[autocomplete]').val('');
       $scope.meal.food = null;
+    }
+
+    function isEmpty(val) {
+      return (val === undefined || val === null || val === '');
     }
    
 });
