@@ -30,10 +30,11 @@
   <h1>Chọn món ăn</h1>
   <div class="icon-row">
   	Bữa ăn
-  	<select id="time" ng-model="meal.time" ng-options="t.label for t in times" ng-required></select>
+  	<select id="time" ng-model="meal.time" ng-options="t.label for t in times" ng-required ng-change="timeChanged()"></select>
 
     <span class="span">Món ăn</span>
-    <select id="food" ng-model="meal.food" ng-options="f.thucan for f in foods | filter:meal.time.value"></select>
+    <!--<select id="food" ng-model="meal.food" ng-options="f.thucan for f in foods | filter:meal.time.value"></select>-->
+    <input type="text" autocomplete="meal.food" ng-model="foodName"/>
 
     <span class="span">Số lượng</span>
     <input type="number" id="quantity" ng-model="meal.quantity" class="number"/>

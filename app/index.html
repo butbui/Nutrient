@@ -11,10 +11,12 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">        
-        <!-- endbuild -->
-        <link rel="stylesheet" href="styles/report.css">
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">        
+    <!-- endbuild -->
+    <link rel="stylesheet" href="styles/report.css">
+
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css" />
 </head>
   <body ng-app="nutrientApp">
     <!--[if lt IE 7]>
@@ -40,19 +42,20 @@
        ga('send', 'pageview');
     </script>
 
-    <!--<script src="bower_components/jquery/jquery.js"></script>-->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
 
-        <!-- build:js scripts/modules.js -->
-        <script src="bower_components/angular-resource/angular-resource.js"></script>
-        <!-- endbuild -->
+    <!-- build:js scripts/modules.js -->
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/nutrient.js"></script>
-        <script src="scripts/controllers/report.js"></script>
-        <script src="scripts/services/NutrientService.js"></script>
-        <script src="scripts/filters/filters.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/services/NutrientService.js"></script>
+    <script src="scripts/filters/filters.js"></script>
+    <script src="scripts/directives/directives.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/nutrient.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

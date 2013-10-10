@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('nutrientApp', ['nutrientServices', 'nutrientFilters'])
+angular.module('nutrientApp', ['nutrientServices', 'nutrientFilters', 'nutrientDirectives'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

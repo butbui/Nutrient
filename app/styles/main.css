@@ -44,14 +44,15 @@ h2 {
 }
 
 .table {
-    border: solid 1px;
-}
-.thead {
-    border: solid 1px;
-    background-color: blue;
-}
-.table thead th {
-    width: 150px;    
-    text-align: left;
+    border-collapse:collapse;
 }
 
+.table, .table th, .table td {
+    border: 1px solid black;
+}
+
+.table th {
+    width: 150px;
+    background-color: #efefef;
+    text-align: left;
+}

@@ -18,7 +18,6 @@ angular.module('nutrientApp')
     // get food from json
     NutrientService.getFoods().then(function (data) {
       $scope.foods = data;
-      $scope.meal.food = data[0];
     });
     // Add food to list
     $scope.saveFood = function() {
@@ -31,5 +30,11 @@ angular.module('nutrientApp')
       console.log("exportToWeb....");      
       $scope.page = 'result';
     };
+
+    $scope.timeChanged = function() {
+      console.log('time changed');
+      $scope.foodName = '';
+      $scope.meal.food = null;
+    }
    
 });
