@@ -1,6 +1,30 @@
 [
-  {"buoi":"Sáng", "thucan": "Bầu xào trứng", "nangluong":109, "dam":4.0, "beo":8.5, "duong":4.0, "vitamin":2.5},
-  {"buoi":"Chiều", "thucan": "Canh Bí", "nangluong":42, "dam":1.2, "beo":2.1, "duong":4.6, "vitamin":1.3}
-
+  {"buoi":"Chiều", "thucan": "Bầu xào trứng", "nangluong":109, "dam":4.0, "beo":8.5, "duong":4.0, "vitamin":2.5},
+  {"buoi":"Chiều", "thucan": "Canh Bí", "nangluong":42, "dam":1.2, "beo":2.1, "duong":4.6, "vitamin":1.3},
+  {"buoi":"Chiều", "thucan": "Chén Cơm", "nangluong":200, "dam":4.6, "beo":0.6, "duong":44.2, "vitamin":0.5},
+  {"buoi":"Chiều", "thucan": "Canh cải", "nangluong":37, "dam":1.8, "beo":2.1, "duong":2.8, "vitamin":1.4},
+  {"buoi":"Chiều", "thucan": "Canh Chua", "nangluong":29, "dam":1.9, "beo":1.1, "duong":2.9, "vitamin":1.7},
+  {"buoi":"Chiều", "thucan": "Canh Hẹ", "nangluong":33, "dam":2.9, "beo":2.1, "duong":0.7, "vitamin":0.8},
+  {"buoi":"Chiều", "thucan": "Canh Khổ qua hầm", "nangluong":175, "dam":10.0, "beo":11.4, "duong":7.9, "vitamin":2.0},
+  {"buoi":"Chiều", "thucan": "Canh mướp", "nangluong":31, "dam":1.4, "beo":2.1, "duong":1.6, "vitamin":0.7},
+  {"buoi":"Chiều", "thucan": "Chả cá", "nangluong":133, "dam":11.3, "beo":9.7, "duong":0.2, "vitamin":0.5},
+  {"buoi":"Chiều", "thucan": "Chả giò", "nangluong":41, "dam":1.8, "beo":2.1, "duong":3.6, "vitamin":0.1},
+  {"buoi":"Chiều", "thucan": "khổ qua xào trứng", "nangluong":114, "dam":4.6, "beo":8.5, "duong":4.6, "vitamin":2.6},
+  {"buoi":"Chiều", "thucan": "Sườn nướng", "nangluong":111, "dam":10.3, "beo":7.3, "duong":1.0, "vitamin":0.4},
+  {"buoi":"Chiều", "thucan": "Tép Rang", "nangluong":101, "dam":5.6, "beo":6.5, "duong":4.8, "vitamin":0.9},
+  {"buoi":"Chiều", "thucan": "Thịt bò xào hành tây", "nangluong":132, "dam":11.8, "beo":6.9, "duong":5.8, "vitamin":1.9},
+  {"buoi":"Chiều", "thucan": "Thịt Heo Quay", "nangluong":146, "dam":9.2, "beo":12.0, "duong":0.0, "vitamin":0.2},
+  {"buoi":"Chiều", "thucan": "Thịt heo xào đậu que", "nangluong":240, "dam":20.5, "beo":10.2, "duong":16.6, "vitamin":2.6},
+  {"buoi":"Sáng", "thucan": "Bánh bao nhân thịt", "nangluong":328, "dam":16.1, "beo":7.9, "duong":48.1, "vitamin":1.5},
+  {"buoi":"Sáng", "thucan": "Bánh Bèo", "nangluong":358, "dam":13.3, "beo":13.9, "duong":44.9, "vitamin":0},
+  {"buoi":"Sáng", "thucan": "Bánh Bột Lọc", "nangluong":487, "dam":13.2, "beo":20.2, "duong":62.7, "vitamin":0},
+  {"buoi":"Sáng", "thucan": "Bánh Chưng", "nangluong":407, "dam":14.9, "beo":5.5, "duong":74.7, "vitamin":3.1},
+  {"buoi":"Trưa", "thucan": "Chén Cơm", "nangluong":200, "dam":4.6, "beo":0.6, "duong":44.2, "vitamin":0.5},
+  {"buoi":"Trưa", "thucan": "Bầu xào trứng", "nangluong":109, "dam":4.0, "beo":8.5, "duong":4.0, "vitamin":2.5},
+  {"buoi":"Trưa", "thucan": "Trứng Cút", "nangluong":17, "dam":1.5, "beo":1.2, "duong":0.1, "vitamin":0},
+  {"buoi":"Trưa", "thucan": "Trứng Ngỗng", "nangluong":210, "dam":14.8, "beo":16.2, "duong":1.1, "vitamin":0},
+  {"buoi":"Trái Cây & Thức uống", "thucan": "Bia", "nangluong":141, "dam":1.6, "beo":0, "duong":7.5, "vitamin":0.1},
+  {"buoi":"Trái Cây & Thức uống", "thucan": "Bưởi ( múi)", "nangluong":8, "dam":0.1, "beo":0, "duong":1.9, "vitamin":0.3},
+  {"buoi":"Trái Cây & Thức uống", "thucan": "Bơ/Trái", "nangluong":184, "dam":3.5, "beo":17.1, "duong":4.2, "vitamin":0}
 
 ]

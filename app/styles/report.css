@@ -10,9 +10,10 @@
 }
 .infor { padding-top: 100px; padding-right: 30px; padding-left: 30px; }
 .bold { font-weight: bold; }
-.w1 { width: 150px; }
-.w2 { width: 10px; }
-.w3 { width: 250px; }
+.italic { font-style: italic; }
+.w1 { width: 400px; }
+.w2 { width: 100px; }
+.w3 { width: 80px; }
 .w4 { width: 80px; }
 .w5 { width: 50px; }
 .w6 { width: 30px; }
