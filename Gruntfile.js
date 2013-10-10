@@ -265,6 +265,23 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      distApp: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>',
+          dest: '<%= yeoman.dist %>',
+          src: [
+            '*.{ico,png,txt,html,json}',
+            '.htaccess',
+            'bower_components/{angular,angular-resource,jquery,jquery-ui}/{angular.min.js,angular-resource.min.js,jquery.min.js,themes/smoothness/jquery-ui.min.css,themes/smoothness/images/*,ui/minified/jquery.ui.autocomplete.min.js,ui/minified/jquery-ui.min.js}',
+            'images/{,*/}*.{gif,webp,png}',
+            'styles/*',
+            'scripts/**',
+            'views/**',
+          ]
+        }]
       }
     },
     concurrent: {
@@ -350,13 +367,16 @@ module.exports = function (grunt) {
     'ngmin',
     //'cssmin',
     //'uglify',
-    'rev',
+    'rev'
     //'usemin'
   ]);
 
+  grunt.registerTask('buildApp', [
+    'clean:dist',
+    'copy:distApp'
+  ]);
+
   grunt.registerTask('default', [
-    //'jshint',
-    //'test',
-    'build'
+    'buildApp'
   ]);
 };
