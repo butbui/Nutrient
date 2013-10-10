@@ -1,0 +1,154 @@
+<div ng-switch on="page">
+<div ng-switch-when="menu">
+<div class="nutrient">
+  <h1>Thông Tin Chung</h1>
+  <div class="icon-row">
+  	<label for="fullname">Họ và tên</label>
+  	<input type="text" id="fullname" ng-model="customer.fullname"/>
+  	<span class="span">Giới tính</span>
+  	<input type="radio" ng-model="customer.gender" value="Nam"/>Nam
+  	<input type="radio" ng-model="customer.gender" value="Nữ"/>Nữ
+   	<span class="span">Tuổi</span>
+  	<input type="text" id="age" ng-model="customer.age" class="number"/>
+  </div>
+  <div class="icon-row">
+  	<label for="address">Địa chỉ</label>
+  	<input type="text" id="address" ng-model="customer.address" class="address"/>
+  </div>
+  <div class="icon-row">
+  	<label for="tel">Số điện thoại</label>
+  	<input type="tel" id="tel" ng-model="customer.tel" />
+  </div>
+  <div class="icon-row">
+    <input type="button" value="Xuất báo cáo" ng-click="exportToWeb();"/>
+  </div>
+</div>
+<br/>
+
+<!-- Add food -->
+<div class="nutrient">
+  <h1>Chọn món ăn</h1>
+  <div class="icon-row">
+  	Bữa ăn
+  	<select id="time" ng-model="meal.time" ng-options="t.label for t in times" ng-required></select>
+
+    <span class="span">Món ăn</span>
+    <select id="food" ng-model="meal.food" ng-options="f.thucan for f in foods | filter:meal.time.value"></select>
+
+    <span class="span">Số lượng</span>
+    <input type="number" id="quantity" ng-model="meal.quantity" class="number"/>
+    <input type="button" value="Thêm vào" ng-click="saveFood();"/>  
+  </div>
+
+</div>
+<br/>
+<div class="nutrient">
+  <h1>Thông tin cho món ăn</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Bữa ăn</th>
+        <th>Món ăn</th>
+        <th>Số lượng</th>
+        <th>Năng Lượng Kcal</th>
+        <th>Đạm Kcal</th>
+        <th>Béo Kcal</th>
+        <th>Đường Kcal</th>
+        <th>Vitamin Kcal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in menu">
+        <td>{{$index + 1}}</td>
+        <td>{{item.time.label}}</td>
+        <td>{{item.food.thucan}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{((item.quantity * item.food.dam * 4) 
+            + (item.quantity * item.food.beo * 9) 
+            + (item.quantity * item.food.duong * 4) 
+            + (item.quantity * item.food.vitamin)) | number : 1}}</td>
+        <td>{{item.quantity * item.food.dam * 4 | number : 1}}</td>
+        <td>{{item.quantity * item.food.beo * 9 | number : 1}}</td>
+        <td>{{item.quantity * item.food.duong * 4 | number : 1}}</td>
+        <td>{{item.quantity * item.food.vitamin | number : 1}}</td>
+      </tr>
+      <tr>
+        <td colspan="4">Năng lượng 1 ngày</td>
+        <td></td>
+        <td>{{menu | total: 'dam'}}</td>
+        <td>{{menu | total: 'beo'}}</td>
+        <td>{{menu | total: 'duong'}}</td>
+        <td>{{menu | total: 'vitamin'}}</td>
+      </tr>
+      <tr>
+        <td colspan="5">Tỉ lệ phần trăm năng lượng trong 1 ngày</td>
+        <td>{{menu | percentage: 'dam' | number : 0}}%</td>
+        <td>{{menu | percentage: 'beo' | number : 0}}%</td>
+        <td>{{menu | percentage: 'duong' | number : 0}}% </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div
+  <!-- Result Page -->
+  <div ng-switch-when="result">
+      <div id="wrap">
+	      <div class="infor">
+          	<table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="bold w1">Họ và tên </td>
+          <td class="bold w2"> : </td>
+          <td class="w3">{{customer.fullname}}</td>
+          <td class="bold w4">Giới tính :</td>
+          <td class="w4">{{customer.gender}}</td>
+          <td class="bold w5">Tuổi : </td>
+          <td>{{customer.age}} {{test}}</td>
+        </tr>
+        <tr>
+          <td><span class="bold w1">Địa chỉ</span></td>
+          <td><span class="bold w2"> : </span></td>
+          <td colspan="5">{{customer.address}}</td>
+        </tr>
+        <tr>
+          <td><span class="bold w1">Số điện thoại</span></td>
+          <td><span class="bold w2"> : </span></td>
+          <td colspan="5">{{customer.tel}}</td>
+        </tr>
+      </table>
+      </div>    
+      <div class="infor1">
+        <div class="left">
+        <table width="347" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>{{result.amountOfFood.dam | number : 1}}</td>
+              <td>{{result.energy.dam | number : 1}}</td>
+              <td>{{result.percentage.dam | number : 0}}</td>
+              <td>10-35</td>
+            </tr>
+            <tr>
+              <td>{{result.amountOfFood.duong | number : 1}}</td>
+              <td>{{result.energy.duong | number : 1}}</td>
+              <td>{{result.percentage.duong | number : 0}}</td>
+              <td>45-65</td>
+            </tr>
+            <tr>
+              <td>{{result.amountOfFood.beo | number : 1}}</td>
+              <td>{{result.energy.beo | number : 1}}</td>
+              <td>{{result.percentage.beo | number : 0}}</td>
+              <td>20-35</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="total"></td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
+

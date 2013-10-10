@@ -1,0 +1,25 @@
+#wrap { 
+    width:820px; 
+    background-image: url('../images/bg.png'); 
+    background-repeat: no-repeat; 
+    background-position: left top; 
+    height: 579px; 
+    margin-top: 20; 
+    margin-right: auto; 
+    margin-left: auto; 
+}
+.infor { padding-top: 100px; padding-right: 30px; padding-left: 30px; }
+.bold { font-weight: bold; }
+.w1 { width: 150px; }
+.w2 { width: 10px; }
+.w3 { width: 250px; }
+.w4 { width: 80px; }
+.w5 { width: 50px; }
+.w6 { width: 30px; }
+.infor table { width: 100%; }
+.infor table td {line-height:20px;}
+.infor1 { padding-top: 48px; }
+.infor1 .left { float: left; width: 346px; margin-left: 115px; }
+.infor1 .left table { width: 346px; margin: 0px; padding: 0px; }
+.infor1 .left td { width: 81px; text-align: center; font-style: normal; vertical-align:middle; line-height:21px; }
+.infor1 .left .total { font-size: 15px; font-weight: bold; padding-top:3px; }

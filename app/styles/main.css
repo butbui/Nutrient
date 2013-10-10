@@ -1,0 +1,57 @@
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+.nutrient {    
+    background-color: #eee;
+    padding: 10px;
+    position: relative;  
+}
+
+h1 {
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 0 0 10px 0;
+    margin: 0;
+}
+
+.number {
+  width: 50px;
+}
+.span {
+  padding-left:50px;
+}
+.address {
+  width: 500px;
+}
+.icon-row {
+    vertical-align: middle;
+    line-height: 30px;
+    padding-bottom: 10px;
+}
+
+.table {
+    border: solid 1px;
+}
+.thead {
+    border: solid 1px;
+    background-color: blue;
+}
+.table thead th {
+    width: 150px;    
+    text-align: left;
+}
+
