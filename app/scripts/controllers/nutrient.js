@@ -33,15 +33,15 @@ angular.module('nutrientApp')
       }
     
       $scope.menu.push(angular.copy($scope.meal));
-      // analysis
-      //$scope.result = NutrientService.analyseNutrition($scope.menu);
     };
 
     $scope.exportToWeb = function() {
-      //console.log("exportToWeb....");      
-      //$scope.page = 'result';
-      NutrientService.saveCustomer($scope.customer);
+      console.log("exportToWeb....");
+	    NutrientService.saveCustomer($scope.customer);
       NutrientService.analyseNutrition($scope.menu);
+      // save data to local storage
+      NutrientService.saveToLocalStorage();
+      //  change to result page
       $location.path('/report');
     };
 

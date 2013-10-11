@@ -1,7 +1,7 @@
 #wrap { 
     width:820px; 
     background-image: url('../images/bg.png'); 
-    /*background-repeat: no-repeat; */
+    background-repeat: no-repeat; 
     background-position: left top; 
     height: 581px; 
     margin-top: 20; 
@@ -11,9 +11,9 @@
 .infor { padding-top: 100px; padding-right: 30px; padding-left: 30px; }
 .bold { font-weight: bold; }
 .italic { font-style: italic; }
-.w1 { width: 400px; }
-.w2 { width: 100px; }
-.w3 { width: 80px; }
+.w1 { width: 370px; }
+.w2 { width: 120px; }
+.w3 { width: 120px; }
 .w4 { width: 80px; }
 .w5 { width: 50px; }
 .w6 { width: 30px; }

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('nutrientServices', [])
-  .service('NutrientService', function ($q, $http) {
+angular.module('nutrientServices', ['LocalStorageModule'])
+  .service('NutrientService', function ($q, $http, localStorageService) {
     var analysisResult = {};
     var customer = {};
     return {
@@ -22,6 +22,9 @@ angular.module('nutrientServices', [])
       },
       getAnalysisResult : function() {
         return analysisResult;
+      },
+      setAnalysisResult : function(result) {
+        analysisResult = result;
       },
       analyseNutrition: function(menu) {
         var result = {};
@@ -65,8 +68,20 @@ angular.module('nutrientServices', [])
         var percentageTotal = damPercentage + beoPercentage + duongPercentage;
         result.total = {energy: energyTotal, percentage: percentageTotal};
 
-		    return analysisResult = angular.copy(result);
+		    analysisResult = angular.copy(result);
 	    },
+      saveToLocalStorage : function() {
+        var localstorageKey = "customerInfo_Nutrition";
+    
+        var customerList = localStorageService.get(localstorageKey);
+        if (!customerList) {
+          customerList = [];
+        }
+        
+        var jsonObj = {customer: customer, result: analysisResult};
+        customerList.push(jsonObj);
+        localStorageService.add(localstorageKey, customerList);
+      },
       saveCustomer: function (cus) {
         customer = angular.copy(cus);
       },
