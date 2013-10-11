@@ -37,12 +37,13 @@ angular.module('nutrientFilters', [])
             beoTotal += item.quantity * item.food.beo * 9;
             duongTotal += item.quantity * item.food.duong * 4;
           }
+          var energyTotal = damTotal + beoTotal + duongTotal;
           if (field === "dam") {
-            percentage = damTotal / (damTotal + beoTotal + duongTotal);
+            percentage = damTotal / (energyTotal);
           } else if (field === "beo") {
-            percentage = beoTotal / (damTotal + beoTotal + duongTotal);
+            percentage = beoTotal / (energyTotal);
           } else if (field === "duong") {
-            percentage = duongTotal / (damTotal + beoTotal + duongTotal);
+            percentage = duongTotal / (energyTotal);
           }
           percentage = isNaN(percentage) ? 0 : percentage.toFixed(2);          
 		      return percentage * 100;

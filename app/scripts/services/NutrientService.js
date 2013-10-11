@@ -46,14 +46,15 @@ angular.module('nutrientServices', [])
           beoKCalTotal += item.quantity * item.food.beo * 9;
           duongKCalTotal += item.quantity * item.food.duong * 4;        
         }
+        var energyTotal = damKCalTotal + beoKCalTotal + duongKCalTotal;
         // Dam
-        var damPercentage = damKCalTotal / (damKCalTotal + beoKCalTotal + duongKCalTotal);
+        var damPercentage = damKCalTotal / (energyTotal);
         damPercentage = isNaN(damPercentage) ? 0 : damPercentage.toFixed(2) * 100;
         // Beo
-        var beoPercentage = beoKCalTotal / (damKCalTotal + beoKCalTotal + duongKCalTotal);
+        var beoPercentage = beoKCalTotal / (energyTotal);
         beoPercentage = isNaN(beoPercentage) ? 0 : beoPercentage.toFixed(2) * 100;
         // Duong
-        var duongPercentage = duongKCalTotal / (damKCalTotal + beoKCalTotal + duongKCalTotal);
+        var duongPercentage = duongKCalTotal / (energyTotal);
         duongPercentage = isNaN(duongPercentage) ? 0 : duongPercentage.toFixed(2) * 100;
 
         // amount of food
@@ -62,6 +63,9 @@ angular.module('nutrientServices', [])
         result.energy = {dam: damKCalTotal, beo: beoKCalTotal, duong: duongKCalTotal};
         // percentage of energy
         result.percentage = {dam: damPercentage, beo: beoPercentage, duong: duongPercentage};
+        // total
+        var percentageTotal = damPercentage + beoPercentage + duongPercentage;
+        result.total = {energy: energyTotal, percentage: percentageTotal};
 
 		    return result;
 	    }

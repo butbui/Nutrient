@@ -5,10 +5,10 @@ angular.module('nutrientApp')
     $scope.page = 'menu';
     $scope.menu = [];
     $scope.times = [
-      {label: 'Sáng', value: 'Sáng'},
-      {label: 'Trưa', value: 'Trưa'},
-      {label: 'Chiều', value: 'Chiều'},
-      {label: 'Trái Cây & Thức uống', value: 'Trái Cây & Thức uống'}
+      {label: 'Sáng', value: 'Sáng', order:1},
+      {label: 'Trưa', value: 'Trưa', order:2},
+      {label: 'Chiều', value: 'Chiều', order:3},
+      {label: 'Trái Cây& Thức uống', value: 'Trái Cây& Thức uống', order:4}
     ];
     // Set default value for gender (M)
     $scope.customer = {gender: 'Nam'};
@@ -24,7 +24,11 @@ angular.module('nutrientApp')
     // Add food to list
     $scope.saveFood = function() {
       if (isEmpty($scope.meal.time) || isEmpty($scope.meal.food) || isEmpty($scope.meal.quantity)) {
-        alert("Xin chọn món ăn và số lượng");
+        window.alert("Xin chọn món ăn và số lượng");
+        return;
+      }
+      if (isNaN($scope.meal.quantity)) {
+        window.alert("Xin nhập số lượng bằng số");
         return;
       }
     

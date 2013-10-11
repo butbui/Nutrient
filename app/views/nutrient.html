@@ -4,12 +4,12 @@
   <h1>Thông Tin Chung</h1>
   <div class="icon-row">
   	<label for="fullname">Họ và tên</label>
-  	<input type="text" id="fullname" ng-model="customer.fullname"/>
+    <input type="text" id="fullname" ng-model="customer.fullname" class="longText"/>
   	<span class="span">Giới tính</span>
   	<input type="radio" ng-model="customer.gender" value="Nam"/>Nam
   	<input type="radio" ng-model="customer.gender" value="Nữ"/>Nữ
    	<span class="span">Tuổi</span>
-  	<input type="text" id="age" ng-model="customer.age" class="number"/>
+    <input type="text" id="age" ng-model="customer.age" class="number" maxlength="2"/>
   </div>
   <div class="icon-row">
   	<label for="address">Địa chỉ</label>
@@ -34,10 +34,10 @@
 
     <span class="span">Món ăn</span>
     <!--<select id="food" ng-model="meal.food" ng-options="f.thucan for f in foods | filter:meal.time.value"></select>-->
-    <input type="text" autocomplete="meal.food" />
+    <input type="text" autocomplete="meal.food" class="mediumText"/>
 
     <span class="span">Số lượng</span>
-    <input type="number" id="quantity" ng-model="meal.quantity" class="number"/>
+    <input type="text" id="quantity" ng-model="meal.quantity" class="number" maxlength="2"/>
     <input type="button" value="Thêm vào" ng-click="saveFood();"/>  
   </div>
 
@@ -60,7 +60,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="item in menu">
+      <tr ng-repeat="item in menu | orderBy:'time.order'"">
         <td>{{$index + 1}}</td>
         <td>{{item.time.label}}</td>
         <td>{{item.food.thucan}}</td>
@@ -114,25 +114,25 @@
             <tr>
               <td>{{result.amountOfFood.dam | number : 1}}</td>
               <td>{{result.energy.dam | number : 1}}</td>
-              <td>{{result.percentage.dam | number : 0}}</td>
-              <td>10-35</td>
+              <td class="bold">{{result.percentage.dam | number : 0}}</td>
+              <td class="bold">13-15</td>
             </tr>
             <tr>
               <td>{{result.amountOfFood.duong | number : 1}}</td>
               <td>{{result.energy.duong | number : 1}}</td>
-              <td>{{result.percentage.duong | number : 0}}</td>
-              <td>45-65</td>
+              <td class="bold">{{result.percentage.duong | number : 0}}</td>
+              <td class="bold">55-60</td>
             </tr>
             <tr>
               <td>{{result.amountOfFood.beo | number : 1}}</td>
               <td>{{result.energy.beo | number : 1}}</td>
-              <td>{{result.percentage.beo | number : 0}}</td>
-              <td>20-35</td>
+              <td class="bold">{{result.percentage.beo | number : 0}}</td>
+              <td class="bold">20-25</td>
             </tr>
             <tr>
               <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td class="total"></td>
+              <td class="total">{{result.total.energy | number : 1}}</td>
+              <td class="total">{{result.total.percentage | number : 0}}</td>
               <td>&nbsp;</td>
             </tr>
           </table>

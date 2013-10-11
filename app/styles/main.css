@@ -27,7 +27,12 @@ h2 {
     padding: 0 0 10px 0;
     margin: 0;
 }
-
+.longText {
+  width: 400px;
+}
+.mediumText {
+  width: 250px;
+}
 .number {
   width: 50px;
 }
