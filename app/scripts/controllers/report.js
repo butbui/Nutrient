@@ -2,7 +2,7 @@
 
 angular.module('nutrientApp')
   .controller('ReportCtrl', function ($scope, NutrientService) {
-    
-    $scope.customer = NutrientService.getAnalysisResult();
-    $scope.test = $scope.customer.fullname;
+    $scope.customer = NutrientService.getCustomer();
+    $scope.result = NutrientService.getAnalysisResult();
+    //console.log($scope.customer);
   });

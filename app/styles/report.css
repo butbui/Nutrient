@@ -1,9 +1,9 @@
 #wrap { 
     width:820px; 
     background-image: url('../images/bg.png'); 
-    background-repeat: no-repeat; 
+    /*background-repeat: no-repeat; */
     background-position: left top; 
-    height: 579px; 
+    height: 581px; 
     margin-top: 20; 
     margin-right: auto; 
     margin-left: auto; 
@@ -24,3 +24,9 @@
 .infor1 .left table { width: 346px; margin: 0px; padding: 0px; }
 .infor1 .left td { width: 81px; text-align: center; font-style: normal; vertical-align:middle; line-height:21px; }
 .infor1 .left .total { font-size: 15px; font-weight: bold; padding-top:3px; }
+
+@media print {
+  a.back {
+    display:none;
+  }
+}

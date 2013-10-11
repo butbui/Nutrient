@@ -3,7 +3,8 @@
 angular.module('nutrientServices', [])
   .service('NutrientService', function ($q, $http) {
     var analysisResult = {};
-    return {       
+    var customer = {};
+    return {
       // Function: 
       getFoods: function(coachId) {
         
@@ -21,9 +22,6 @@ angular.module('nutrientServices', [])
       },
       getAnalysisResult : function() {
         return analysisResult;
-      },
-      setAnalysisResult : function(result) {
-        analysisResult = result;
       },
       analyseNutrition: function(menu) {
         var result = {};
@@ -67,7 +65,13 @@ angular.module('nutrientServices', [])
         var percentageTotal = damPercentage + beoPercentage + duongPercentage;
         result.total = {energy: energyTotal, percentage: percentageTotal};
 
-		    return result;
-	    }
+		    return analysisResult = angular.copy(result);
+	    },
+      saveCustomer: function (cus) {
+        customer = angular.copy(cus);
+      },
+      getCustomer: function () {
+        return customer;
+      }
     };
   });

@@ -89,56 +89,5 @@
     </tbody>
   </table>
 </div>
-</div
-  <!-- Result Page -->
-  <div ng-switch-when="result">
-      <div id="wrap">
-	      <div class="infor">
-          	<table border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="italic w1">Họ và tên: {{customer.fullname}}</td>
-                <td class="italic w2">Giới tính: {{customer.gender}}</td>
-                <td class="italic w3">Tuổi: {{customer.age}}</td>
-              </tr>
-              <tr>
-                <td class="italic" colspan="3">Địa chỉ: {{customer.address}}</td>
-              </tr>
-              <tr>
-                <td class="italic" colspan="3">Số điện thoại: {{customer.tel}}</td>
-              </tr>
-            </table>
-      </div>    
-      <div class="infor1">
-        <div class="left">
-        <table width="347" border="0" cellpadding="0" cellspacing="0">
-            <tr>
-              <td>{{result.amountOfFood.dam | number : 1}}</td>
-              <td>{{result.energy.dam | number : 1}}</td>
-              <td class="bold">{{result.percentage.dam | number : 0}}</td>
-              <td class="bold">13-15</td>
-            </tr>
-            <tr>
-              <td>{{result.amountOfFood.duong | number : 1}}</td>
-              <td>{{result.energy.duong | number : 1}}</td>
-              <td class="bold">{{result.percentage.duong | number : 0}}</td>
-              <td class="bold">55-60</td>
-            </tr>
-            <tr>
-              <td>{{result.amountOfFood.beo | number : 1}}</td>
-              <td>{{result.energy.beo | number : 1}}</td>
-              <td class="bold">{{result.percentage.beo | number : 0}}</td>
-              <td class="bold">20-25</td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td class="total">{{result.total.energy | number : 1}}</td>
-              <td class="total">{{result.total.percentage | number : 0}}</td>
-              <td>&nbsp;</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      </div>
-  </div>
 </div>
-
+</div>
