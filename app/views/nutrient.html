@@ -33,7 +33,6 @@
   	<select id="time" ng-model="meal.time" ng-options="t.label for t in times" ng-required ng-change="timeChanged()"></select>
 
     <span class="span">Món ăn</span>
-    <!--<select id="food" ng-model="meal.food" ng-options="f.thucan for f in foods | filter:meal.time.value"></select>-->
     <input type="text" autocomplete="meal.food" class="mediumText"/>
 
     <span class="span">Số lượng</span>
@@ -46,7 +45,7 @@
 <div class="nutrient">
   <h1>Thông tin cho món ăn</h1>
   <table class="table">
-    <thead>
+    <thead class="fontTitle">
       <tr>
         <th style="width:40px">STT</th>
         <th style="width:180px">Bữa ăn</th>
@@ -54,36 +53,36 @@
         <th style="width:80px">Số lượng</th>
         <th>Năng Lượng Kcal</th>
         <th>Đạm Kcal</th>
-        <th>Béo Kcal</th>
         <th>Đường Kcal</th>
+        <th>Béo Kcal</th>        
         <th>Vitamin Kcal</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="item in menu | orderBy:'time.order'"">
         <td>{{$index + 1}}</td>
-        <td>{{item.time.label}}</td>
-        <td>{{item.food.thucan}}</td>
+        <td>{{item.food.buoi}}</td>
+        <td align="left">{{item.food.thucan}}</td>
         <td>{{item.quantity}}</td>
         <td>{{item.quantity * item.food.nangluong | number : 1}}</td>
         <td>{{item.quantity * item.food.dam * 4 | number : 1}}</td>
-        <td>{{item.quantity * item.food.beo * 9 | number : 1}}</td>
         <td>{{item.quantity * item.food.duong * 4 | number : 1}}</td>
+        <td>{{item.quantity * item.food.beo * 9 | number : 1}}</td>        
         <td>{{item.quantity * item.food.vitamin | number : 1}}</td>
       </tr>
       <tr>
         <td colspan="4">Năng lượng 1 ngày</td>
         <td>{{menu | total: 'nangluong' | number : 1}}</td>
         <td>{{menu | total: 'dam' | number : 1}}</td>
-        <td>{{menu | total: 'beo' | number : 1}}</td>
         <td>{{menu | total: 'duong' | number : 1}}</td>
+        <td>{{menu | total: 'beo' | number : 1}}</td>        
         <td>{{menu | total: 'vitamin' | number : 1}}</td>
       </tr>
       <tr>
         <td colspan="5">Tỉ lệ phần trăm năng lượng trong 1 ngày</td>
         <td>{{menu | percentage: 'dam' | number : 0}}%</td>
-        <td>{{menu | percentage: 'beo' | number : 0}}%</td>
         <td>{{menu | percentage: 'duong' | number : 0}}% </td>
+        <td>{{menu | percentage: 'beo' | number : 0}}%</td>        
         <td></td>
       </tr>
     </tbody>

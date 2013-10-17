@@ -1,10 +1,9 @@
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
 
-.nutrient {    
+.nutrient {   
     background-color: #eee;
     padding: 10px;
     position: relative;  
@@ -49,15 +48,39 @@ h2 {
 }
 
 .table {
-    border-collapse:collapse;
+  border-collapse:collapse;
+  text-align: center;
+  margin: 5px 20px 0 20px;
 }
 
-.table, .table th, .table td {
-    border: 1px solid black;
+.table th, .table td {
+  border: 1px solid black;
 }
 
 .table th {
     width: 150px;
-    background-color: #efefef;
-    text-align: left;
+    background-color: #0F4784;
+}
+
+.clear {
+  clear:both;
+}
+
+.colorSubTitle {
+  background-color: #2BBBF3;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+.table .tr-tong .td-value {
+  background-color: #0F4784;
+  color: white;
+}
+
+.table .tr-tong .td-label {
+  padding-right: 5px;
+  text-align: right;
+  color: #104684;
+  border: none;
+
 }

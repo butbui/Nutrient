@@ -3,7 +3,7 @@
 angular.module('nutrientServices', ['LocalStorageModule'])
   .service('NutrientService', function ($q, $http, localStorageService) {
     var analysisResult = {};
-    var customer = {};
+    var customer = {}, menu = {};
     return {
       // Function: 
       getFoods: function(coachId) {
@@ -31,22 +31,29 @@ angular.module('nutrientServices', ['LocalStorageModule'])
         var damGTotal = 0;
         var beoGTotal = 0;
         var duongGTotal = 0;
+        var nangluongKCalTotal = 0;
         var damKCalTotal = 0;
         var beoKCalTotal = 0;
         var duongKCalTotal = 0;
         var item;
-        
-        for (var i = 0; i < menu.length; i++) {
-          item = menu[i];
-          // in gam
-          damGTotal += item.quantity * item.food.dam;
-          beoGTotal += item.quantity * item.food.beo;
-          duongGTotal += item.quantity * item.food.duong;
-          // in Kcal
-          damKCalTotal += item.quantity * item.food.dam * 4;
-          beoKCalTotal += item.quantity * item.food.beo * 9;
-          duongKCalTotal += item.quantity * item.food.duong * 4;        
+        if (angular.isUndefined(menu)) {
+          return result;
         }
+        for (var buaan in menu) {
+          for (var i = 0; i < menu[buaan].length; i++) {
+            item = menu[buaan][i];
+            // in gam
+            damGTotal += item.quantity * item.food.dam;
+            beoGTotal += item.quantity * item.food.beo;
+            duongGTotal += item.quantity * item.food.duong;
+            // in Kcal
+            nangluongKCalTotal += item.quantity * item.food.nangluong;
+            damKCalTotal += item.quantity * item.food.dam * 4;
+            beoKCalTotal += item.quantity * item.food.beo * 9;
+            duongKCalTotal += item.quantity * item.food.duong * 4;        
+          }
+        }
+
         var energyTotal = damKCalTotal + beoKCalTotal + duongKCalTotal;
         // Dam
         var damPercentage = damKCalTotal / (energyTotal);
@@ -61,14 +68,15 @@ angular.module('nutrientServices', ['LocalStorageModule'])
         // amount of food
         result.amountOfFood = {dam: damGTotal, beo: beoGTotal, duong: duongGTotal};
         // amount of energy
-        result.energy = {dam: damKCalTotal, beo: beoKCalTotal, duong: duongKCalTotal};
+        result.energy = {nangluong: nangluongKCalTotal, dam: damKCalTotal, beo: beoKCalTotal, duong: duongKCalTotal};
         // percentage of energy
         result.percentage = {dam: damPercentage, beo: beoPercentage, duong: duongPercentage};
         // total
         var percentageTotal = damPercentage + beoPercentage + duongPercentage;
-        result.total = {energy: energyTotal, percentage: percentageTotal};
+        result.total = {energy: nangluongKCalTotal, percentage: percentageTotal};
 
 		    analysisResult = angular.copy(result);
+        return analysisResult;
 	    },
       saveToLocalStorage : function() {
         var localstorageKey = "customerInfo_Nutrition";
@@ -78,15 +86,43 @@ angular.module('nutrientServices', ['LocalStorageModule'])
           customerList = [];
         }
         
-        var jsonObj = {customer: customer, result: analysisResult};
-        customerList.push(jsonObj);
+        //var jsonObj = {customer: customer, result: analysisResult};
+        //var jsonObj = {customer: customer, menu: menu};
+        var cusObj = {};
+        var jsonObj = {};
+
+        for (var i=0 ; i<=100; i++) {
+          cusObj = angular.copy(customer);          
+          cusObj.fullname += i;
+          
+          var jsonObj = {customer: cusObj, menu: menu};
+          customerList.push(jsonObj);
+        }        
         localStorageService.add(localstorageKey, customerList);
       },
       saveCustomer: function (cus) {
         customer = angular.copy(cus);
+        console.log(customer);
       },
       getCustomer: function () {
         return customer;
+      },
+      saveMenu: function (mn) {
+        var initMenu = angular.copy(mn);
+        menu = {
+          'Sáng': [],
+          'Trưa': [],
+          'Chiều': [],
+          'Trái Cây& Thức uống': []
+        };
+
+        for (var i = 0; i < initMenu.length; i++) {
+          menu[initMenu[i].food.buoi].push(initMenu[i]);
+        }
+        console.log(menu);
+      },
+      getMenu: function () {
+        return menu;
       }
     };
   });

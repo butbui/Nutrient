@@ -31,14 +31,23 @@ angular.module('nutrientApp')
         window.alert("Xin nhập số lượng bằng số");
         return;
       }
-    
-      $scope.menu.push(angular.copy($scope.meal));
+      var menuObj = {quantity: $scope.meal.quantity, food: $scope.meal.food};
+      $scope.menu.push(angular.copy(menuObj));
     };
 
     $scope.exportToWeb = function() {
       console.log("exportToWeb....");
+      if (angular.isUndefined($scope.menu) || $scope.menu.length == 0) {
+        window.alert("Xin chọn món ăn");
+        return;
+      }
+      if (isEmpty($scope.customer.fullname)) {
+        window.alert("Xin nhập họ tên");
+        return;
+      }
 	    NutrientService.saveCustomer($scope.customer);
-      NutrientService.analyseNutrition($scope.menu);
+      NutrientService.saveMenu($scope.menu);
+
       // save data to local storage
       NutrientService.saveToLocalStorage();
       //  change to result page

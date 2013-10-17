@@ -7,18 +7,19 @@ angular.module('nutrientFilters', [])
 	  return function(menu, field) {
         var total = 0;
         var item;
-        
-        var percentage = 1;
-        if (field === "dam") {
-          percentage = 4;
-        } else if (field === "beo") {
-          percentage = 9;
-        } else if (field === "duong") {
-          percentage = 4;
-        }
-        for (var i = 0; i < menu.length; i++) {
-          item = menu[i];
-          total += item.quantity * item.food[field] * percentage;
+        if (!angular.isUndefined(menu)) {
+          var percentage = 1;
+          if (field === "dam") {
+            percentage = 4;
+          } else if (field === "beo") {
+            percentage = 9;
+          } else if (field === "duong") {
+            percentage = 4;
+          }
+          for (var i = 0; i < menu.length; i++) {
+            item = menu[i];
+            total += item.quantity * item.food[field] * percentage;
+          }
         }
 		    return total;
 	  };
