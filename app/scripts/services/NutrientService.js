@@ -79,30 +79,21 @@ angular.module('nutrientServices', ['LocalStorageModule'])
         return analysisResult;
 	    },
       saveToLocalStorage : function() {
-        var localstorageKey = "customerInfo_Nutrition";
-    
-        var customerList = localStorageService.get(localstorageKey);
-        if (!customerList) {
-          customerList = [];
+        var localstorageKey = "Customer_Nutrition";
+   
+        var currentIndex = localStorageService.get("Nutrition_Index");
+        if (!currentIndex) {
+          currentIndex = 1;
+        } else {
+          currentIndex++;
         }
         
-        //var jsonObj = {customer: customer, result: analysisResult};
-        //var jsonObj = {customer: customer, menu: menu};
-        var cusObj = {};
-        var jsonObj = {};
-
-        for (var i=0 ; i<=100; i++) {
-          cusObj = angular.copy(customer);          
-          cusObj.fullname += i;
-          
-          var jsonObj = {customer: cusObj, menu: menu};
-          customerList.push(jsonObj);
-        }        
-        localStorageService.add(localstorageKey, customerList);
+        var jsonObj = {index: currentIndex, customer: customer, menu: menu};
+        localStorageService.add(localstorageKey + currentIndex, jsonObj);
+        localStorageService.add("Nutrition_Index", currentIndex);
       },
       saveCustomer: function (cus) {
         customer = angular.copy(cus);
-        console.log(customer);
       },
       getCustomer: function () {
         return customer;
@@ -119,7 +110,6 @@ angular.module('nutrientServices', ['LocalStorageModule'])
         for (var i = 0; i < initMenu.length; i++) {
           menu[initMenu[i].food.buoi].push(initMenu[i]);
         }
-        console.log(menu);
       },
       getMenu: function () {
         return menu;
