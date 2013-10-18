@@ -21,6 +21,24 @@ angular.module('nutrientApp')
         }
     };
 
+    var EVALUATE_ENERGY = {
+      'less': {
+        description: 'Thiếu',
+        evaluate: 'Tổng năng lượng thấp hơn mức năng lượng nhu cầu theo khuyến nghị',
+        recommend: 'Bổ sung dinh dưỡng theo đường uống với sữa cao năng lượng, giàu đạm, đầy đủ vitamin và khoáng chất, kết hợp chế độ ăn đầy đủ chất, cân đối, đa dạng các lọai thực phẩm'
+      },
+      'enough': {
+        description: 'Đủ',
+        evaluate: 'Đạt mức năng lượng nhu cầu theo khuyến nghị',
+        recommend: 'Cần áp dụng chế độ dinh dưỡng hợp lý gồm đầy đủ, đa dạng các lọai thực phẩm, đảm bảo 4 nhóm thực phẩm chính(đạm, đường, béo, vitamin), kết hợp uống bồ sung 1- 2 ly sữa /ngày'
+      },
+      'over': {
+        description: 'Thừa',
+        evaluate: 'Tổng năng lượng cao hơn mức năng lượng nhu cầu theo khuyến nghị',
+        recommend: 'Bớt ăn các món nhiều tinh bột (cơm, bánh mì…), bớt mỡ, đường, thịt, không ăn vặt, ăn đêm, tăng cường vận động, hạn chế rượu bia'
+      }
+    };
+
     var LEVEL = ["less", "enough", "over"];
 
     var identifyDetailLevel = function (field) {
@@ -69,7 +87,11 @@ angular.module('nutrientApp')
           level = LEVEL[1];
         }
       }
-      return {standardEnergy: standardEnergy, level: level};
+      return {standardEnergy: standardEnergy, 
+              level: level,
+              description: EVALUATE_ENERGY[level].description,
+              evaluate: EVALUATE_ENERGY[level].evaluate, 
+              recommend: EVALUATE_ENERGY[level].recommend};
     }
 
     $scope.customer = NutrientService.getCustomer();
@@ -81,5 +103,4 @@ angular.module('nutrientApp')
     $scope.level.duong = identifyDetailLevel('duong');
     $scope.level.beo = identifyDetailLevel('beo');
     $scope.level.nangluong = identifyEnergyLevel();
-    
   });

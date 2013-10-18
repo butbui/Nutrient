@@ -80,7 +80,13 @@
 }
 
 .commentBox {
-  height: 140px;
+  height: 150px;
+}
+
+.commentBox td {
+  padding: 5px;
+  vertical-align: top;
+  width: 100px;
 }
 
 .commentBox1 {
