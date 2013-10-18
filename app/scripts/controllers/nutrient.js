@@ -10,8 +10,10 @@ angular.module('nutrientApp')
       {label: 'Chiều', value: 'Chiều', order:3},
       {label: 'Trái Cây& Thức uống', value: 'Trái Cây& Thức uống', order:4}
     ];
+
     // Set default value for gender (M)
-    $scope.customer = {gender: 'Nam'};
+    $scope.customer = {gender: 'Nam', typeOfWork: 0};
+
     // Set default value for Bua an (Sang)
     $scope.meal = {
       time: $scope.times[0],
@@ -45,6 +47,11 @@ angular.module('nutrientApp')
         window.alert("Xin nhập họ tên");
         return;
       }
+      if (isEmpty($scope.customer.yearOfBirth)) {
+        window.alert("Xin nhập năm sinh");
+        return;
+      }
+
 	    NutrientService.saveCustomer($scope.customer);
       NutrientService.saveMenu($scope.menu);
 

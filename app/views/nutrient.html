@@ -6,10 +6,16 @@
   	<label for="fullname">Họ và tên</label>
     <input type="text" id="fullname" ng-model="customer.fullname" class="longText"/>
   	<span class="span">Giới tính</span>
-  	<input type="radio" ng-model="customer.gender" value="Nam"/>Nam
-  	<input type="radio" ng-model="customer.gender" value="Nữ"/>Nữ
-   	<span class="span">Năm sinh</span>
-    <input type="text" id="age" ng-model="customer.age" class="number" maxlength="4"/>
+    <input type="radio" ng-model="customer.gender" value="Nam"/>Nam
+    <input type="radio" ng-model="customer.gender" value="Nữ"/>Nữ
+    <span class="span">Năm sinh</span>
+    <input type="text" id="age" ng-model="customer.yearOfBirth" class="number" maxlength="4"/>
+  </div>
+  <div class="icon-row">
+    <label>Lao động</label>
+    <input type="radio" ng-model="customer.typeOfWork" value="0"/>Nhẹ
+    <input type="radio" ng-model="customer.typeOfWork" value="1"/>Vừa
+    <input type="radio" ng-model="customer.typeOfWork" value="2"/>Nặng
   </div>
   <div class="icon-row">
   	<label for="address">Địa chỉ</label>
