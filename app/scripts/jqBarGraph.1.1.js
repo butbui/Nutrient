@@ -182,7 +182,7 @@
  						sv = arr.prefix+valueData[i]+arr.postfix;
  						fs = 12; // font-size is 0 if showValues = false
  					}
- 					o = "<div class='subBars"+el.id+"' style='height:"+heig+"px; background-color: "+arr.colors[i]+"; left:"+wid*i+"px; color:"+arr.showValuesColor+"; font-size:"+fs+"px' >"+sv+"</div>";
+ 					o = "<div class='subBars"+el.id+"' style='height:"+heig+"px; background-color: "+arr.colors[i]+"; left:"+wid*i+"px; color:"+arr.showValuesColor+"; font-size:"+fs+"px' >"+parseFloat(sv).toFixed(1)+"</div>";
  					$('#graphFieldBar'+unique).prepend(o);
  				}
  			}

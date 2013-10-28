@@ -194,7 +194,7 @@ angular.module('nutrientApp')
       return rs;
     };
     function calculateStandardKcal(totalEnergy, percentage) {
-      return Math.round((totalEnergy * percentage) / 100);
+      return ((totalEnergy * percentage) / 100);
     }
 
     function getNumOfGlasses(actualEnergy, standardEnergy) {
