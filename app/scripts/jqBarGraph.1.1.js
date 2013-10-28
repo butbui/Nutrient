@@ -52,9 +52,11 @@
 	sum = function(ar){
 		total = 0;
 		for(val in ar){
+      console.log('val: ' + ar[val]);
 			total += ar[val];
 		}
-		return Math.round(total);
+    console.log('total: ' + total);
+		return total.toFixed(1);
 	};
 	
 	// count max value of array

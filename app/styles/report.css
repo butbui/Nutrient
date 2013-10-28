@@ -27,7 +27,7 @@
 .infor table td {line-height:20px;}
 
 .fontTitle {
-  font-size: 14px;   
+  font-size: 12px;   
   color: white;  
 }
 .infor1 { float: left; padding-top: 5px; }
@@ -73,7 +73,8 @@
 }
 
 .commentBox {
-  height: 150px;
+  height: 40px;
+  font-size: 7pt;
 }
 
 .commentBox td {
@@ -91,10 +92,10 @@
   border: 1px solid grey;  
 }
 .commentBox1 thead th {
-    width: 240px;
+    width: 160px;
     background-color: #2BBBF3;
     text-align: center;
-    height: 26px;
+    height: 20px;
 }
 
 .commentBox2 {
@@ -107,10 +108,10 @@
   
 }
 .commentBox2 th {
-  width: 380px;
+  width: 280px;
   background-color: #0F4784;
   text-align: center;
-  height: 26px;
+  height: 20px;
 }
 .commentBox3 {
   margin: 10px 0px 0 20px;
@@ -131,6 +132,7 @@
 
 #divForGraph {
   margin-bottom: 20px;
+  float: left;
 }
 
 .graphLabeldivForGraph{
@@ -149,7 +151,7 @@
 
 .bosung {
   float: right;
-  
+  margin: 10px;
 }
 
 .instruction {
