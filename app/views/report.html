@@ -36,57 +36,16 @@
 
 <div>
   <div class="groupHeader">Phân tích năng lượng:</div>
-  <div class="infor1">
-      <table cellpadding="0" cellspacing="0">
-        <thead>
-        <tr>        
-          <th colspan="2" class="col fontTitle">Tổng năng lượng</th>
-          <th colspan="2" class="col fontTitle">% năng lượng<br/>từ đạm</th>
-          <th colspan="2" class="col fontTitle">% năng lượng<br/>từ đường</th>
-          <th colspan="2" class="col fontTitle">% năng lượng<br/>từ béo</th>
-        </tr>
-        </thead>
-          <tr class="subTitle">
-            <td>Thực tế</td>
-            <td>Khuyến nghị</td>
-            <td>Thực tế</td>
-            <td>Khuyến nghị</td>
-            <td>Thực tế</td>
-            <td>Khuyến nghị</td>
-            <td>Thực tế</td>
-            <td>Khuyến nghị</td>
-          </tr>
-          <tr style="height:30px">
-            <td class="level-{{level.nangluong.level}}">{{result.total.energy | number : 1}}</td>
-            <td>{{level.nangluong.standardEnergy}}</td>
-            <td class="level-{{level.dam}}">{{result.percentage.dam | number : 0}}</td>
-            <td>13-15</td>
-            <td class="level-{{level.duong}}">{{result.percentage.duong | number : 0}}</td>
-            <td>55-60</td>
-            <td class="level-{{level.beo}}">{{result.percentage.beo | number : 0}}</td>
-            <td>20-25</td>
-          </tr>
-        </table>
-  </div>
-  <div class="instruction">
-    <img src="../images/instruction.jpg" />
+  <div id="divForGraph"></div>
+  <div class="bosung">
+    <div class="instruction">Bổ sung dinh dưỡng đường uống:</div>
+    <div>Bạn cần uống thêm {{numOfGlasses}} ly <img src="images/ensure.png"/>mỗi ngày</div>
+    <div ng-repeat="numOfGlasses"><img src="images/milk.png"/></div>
   </div>
 </div>
 <div class="clear"></div>
 <div>
-  <div class="groupHeader">Đề xuất:</div>
-  <div class="commentBox1">
-    <table cellpadding="0" cellspacing="0">
-      <thead>
-          <tr>        
-            <th colspan="2" class="col fontTitle">Tổng năng lượng</th>
-          </tr>
-      </thead>
-      <tr class="commentBox">
-          <td>{{level.nangluong.description}}</td>
-      </tr>
-    </table>
-  </div>
+<!--  <div class="groupHeader">Đề xuất:</div>-->
   <div class="commentBox2">
     <table cellpadding="0" cellspacing="0">
       <thead>
@@ -95,7 +54,7 @@
           </tr>
       </thead>
       <tr class="commentBox">
-          <td>{{level.nangluong.evaluate}}</td>
+          <td></td>
       </tr>
     </table>
   </div>
@@ -107,10 +66,8 @@
           </tr>
       </thead>
       <tr class="commentBox">
-          <td>{{level.nangluong.recommend}}</td>
+          <td></td>
       </tr>
     </table>
   </div>
 </div>
-<div class="clear"></div>
-<div class="commentBox3 italic">Bổ sung dinh dưỡng đường uống:</div>

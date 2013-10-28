@@ -2,6 +2,7 @@
 
 angular.module('nutrientApp')
   .controller('ReportCtrl', function ($scope, NutrientService) {
+    
     var STANDARD_DETAIL = {
       dam: {minValue:13, maxValue:15},
       duong: {minValue:55, maxValue:60},
@@ -92,6 +93,49 @@ angular.module('nutrientApp')
               description: EVALUATE_ENERGY[level].description,
               evaluate: EVALUATE_ENERGY[level].evaluate, 
               recommend: EVALUATE_ENERGY[level].recommend};
+    };
+
+    function calculateGraphData(actualEnergy, standardEnergyMin, standardEnergyMax) {
+      var rs = [0, 0, 0];
+      if (standardEnergyMax === undefined || standardEnergyMax === null) {
+        standardEnergyMax = standardEnergyMin;
+      }
+
+      if (actualEnergy < standardEnergyMin) { // less
+
+          rs = [Math.round(actualEnergy), Math.round(standardEnergyMin - actualEnergy), 0];
+
+      } else if (actualEnergy > standardEnergyMax) { // more
+        rs = [Math.round(standardEnergyMax), 0, Math.round(actualEnergy - standardEnergyMax)];
+      } else { // enough
+        rs = [Math.round(actualEnergy), 0, 0];
+      }
+      return rs;
+    };
+
+    function calculateStandardKcal(totalEnergy, percentage) {
+      console.log(Math.round((totalEnergy * percentage) / 100));
+      return Math.round((totalEnergy * percentage) / 100);
+    }
+
+    function getNumOfGlasses(actualEnergy, standardEnergy) {
+      var num = 0;
+      if (actualEnergy >= standardEnergy) {
+        num = 1;
+      } else if (standardEnergy - actualEnergy <= 1500) {
+        num = 6;
+      } else if (standardEnergy - actualEnergy <= 1250) {
+        num = 5;
+      } else if (standardEnergy - actualEnergy <= 1000) {
+        num = 4;
+      } else if (standardEnergy - actualEnergy <= 750) {
+        num = 3;
+      } else if (standardEnergy - actualEnergy <= 500) {
+        num = 2;
+      } else if (standardEnergy - actualEnergy <= 250) {
+        num = 1;
+      }
+      return num;
     }
 
     $scope.customer = NutrientService.getCustomer();
@@ -103,4 +147,37 @@ angular.module('nutrientApp')
     $scope.level.duong = identifyDetailLevel('duong');
     $scope.level.beo = identifyDetailLevel('beo');
     $scope.level.nangluong = identifyEnergyLevel();
+    $scope.numOfGlasses = getNumOfGlasses($scope.result.energy.nangluong, $scope.level.nangluong.standardEnergy);
+    
+    var enGraphData = calculateGraphData($scope.result.energy.nangluong, 
+                                         $scope.level.nangluong.standardEnergy);
+    var damGraphData = calculateGraphData($scope.result.energy.dam, 
+                                          calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['dam'].minValue), 
+                                          calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['dam'].maxValue));
+    var duongGraphData = calculateGraphData($scope.result.energy.duong, 
+                                            calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['duong'].minValue), 
+                                            calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['duong'].maxValue));
+    var beoGraphData = calculateGraphData($scope.result.energy.beo, 
+                                          calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['beo'].minValue), 
+                                          calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['beo'].maxValue));
+    // draw graph
+    var arrayOfData = new Array(
+        [enGraphData,'Tổng Năng Lượng'],
+        [damGraphData,'Đạm'],
+        [duongGraphData,'Đường	'],
+        [beoGraphData,'Béo']
+    );
+    $('#divForGraph').jqBarGraph({ 
+      data: arrayOfData,
+      colors: ['green','yellow','red'],
+      legends: ['Thực Tế', 'Thiếu', 'Thừa'],
+      legend: true,
+      width: 450,
+      height: 250,
+      barSpace: 50,
+      showValuesColor: '#000'
+    });
+
+    $('#divForGraph').find('div.subBarsdivForGraph:contains("0")').filter(function() {return $(this).text() == '0'}).remove();
+  
   });
