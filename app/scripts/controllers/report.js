@@ -260,6 +260,6 @@ angular.module('nutrientApp')
       showValuesColor: '#000'
     });
 
-    $('#divForGraph').find('div.subBarsdivForGraph:contains("0")').filter(function() {return $(this).text() == '0'}).remove();
+    $('#divForGraph').find('div.subBarsdivForGraph:contains("0")').filter(function() {return $(this).text() == '0.0'}).remove();
   
   });
