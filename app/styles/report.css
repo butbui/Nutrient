@@ -73,7 +73,7 @@
 }
 
 .commentBox {
-  height: 40px;
+  height: 120px;
   font-size: 7pt;
 }
 
@@ -108,7 +108,7 @@
   
 }
 .commentBox2 th {
-  width: 280px;
+  width: 380px;
   background-color: #0F4784;
   text-align: center;
   height: 20px;
