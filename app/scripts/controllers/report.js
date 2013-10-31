@@ -25,18 +25,18 @@ angular.module('nutrientApp')
     var EVALUATE_ENERGY = {
       'less': {
         description: 'Thiếu',
-        evaluate: 'Tổng năng lượng thấp hơn mức năng lượng nhu cầu theo khuyến nghị',
-        recommend: 'Bổ sung dinh dưỡng theo đường uống với sữa cao năng lượng, giàu đạm, đầy đủ vitamin và khoáng chất, kết hợp chế độ ăn đầy đủ chất, cân đối, đa dạng các lọai thực phẩm'
+        evaluate: 'Tổng năng lượng thấp hơn mức năng lượng nhu cầu theo khuyến nghị.',
+        recommend: 'Bổ sung dinh dưỡng theo đường uống với sữa đầy đủ và cân đối, đạm chất lượng cao, đầy đủ vitamin và khoáng chất, kết hợp chế độ ăn đa dạng các loại thực phẩm.'
       },
       'enough': {
         description: 'Đủ',
         evaluate: 'Đạt mức năng lượng nhu cầu theo khuyến nghị',
-        recommend: 'Cần áp dụng chế độ dinh dưỡng hợp lý gồm đầy đủ, đa dạng các lọai thực phẩm, đảm bảo 4 nhóm thực phẩm chính(đạm, đường, béo, vitamin), kết hợp uống bồ sung 1- 2 ly sữa /ngày'
+        recommend: 'Cần áp dụng chế độ dinh dưỡng hợp lý gồm đầy đủ, đa dạng các lọai thực phẩm, đảm bảo 4 nhóm thực phẩm chính(đạm, đường, béo, vitamin), kết hợp uống bồ sung 1- 2 ly sữa /ngày.'
       },
       'over': {
         description: 'Thừa',
-        evaluate: 'Tổng năng lượng cao hơn mức năng lượng nhu cầu theo khuyến nghị',
-        recommend: 'Bớt ăn các món nhiều tinh bột (cơm, bánh mì…), bớt mỡ, đường, thịt, không ăn vặt, ăn đêm, tăng cường vận động, hạn chế rượu bia'
+        evaluate: 'Tổng năng lượng cao hơn mức năng lượng nhu cầu theo khuyến nghị.',
+        recommend: 'Bớt ăn các món nhiều tinh bột (cơm, bánh mì…), bớt mỡ, đường, thịt, không ăn vặt, ăn đêm, tăng cường vận động, hạn chế rượu bia.'
       }
     };
     var EVALUATE_DETAIL = {};
@@ -206,6 +206,87 @@ angular.module('nutrientApp')
       return new Array(num);
     }
 
+    function loadChart() {
+      var chart1 = new cfx.Chart();
+      var enGraphData = calculateGraphData($scope.result.energy.nangluong, 
+                                         $scope.level.nangluong.standardEnergy);
+      var damGraphData = calculateGraphData($scope.result.energy.dam, 
+                                            calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['dam'].minValue), 
+                                            calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['dam'].maxValue));
+      var duongGraphData = calculateGraphData($scope.result.energy.duong, 
+                                              calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['duong'].minValue), 
+                                              calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['duong'].maxValue));
+      var beoGraphData = calculateGraphData($scope.result.energy.beo, 
+                                            calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['beo'].minValue), 
+                                            calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['beo'].maxValue));
+      
+      chart1.getAnimations().getLoad().setEnabled(true);
+      chart1.setGallery(cfx.Gallery.Bar);
+      chart1.getToolTips().setEnabled(false);
+    
+      var data = chart1.getData();
+
+      chart1.getData().setSeries(3);
+
+      // draw graph
+      var arrayOfData = new Array(
+          enGraphData,
+          damGraphData,
+          duongGraphData,
+          beoGraphData
+      );
+
+      for (var i = 0; i <= 3; i++) {
+        // thuc te
+        data.setItem(0, i, (arrayOfData[i][0]));
+        // thieu
+        if (arrayOfData[i][1] > 0) {
+          data.setItem(1, i, (arrayOfData[i][1]));
+        }
+        // thua
+        if (arrayOfData[i][2] > 0) {
+          data.setItem(2, i, (arrayOfData[i][2]));  
+        }  
+      }
+
+      chart1.getSeries().getItem(0).setColor('#108F1A'); // thuc te (xanh)
+      chart1.getSeries().getItem(0).setText("Thực Tế");
+
+      chart1.getSeries().getItem(1).setColor('#FFF035'); // thieu (vang)
+      chart1.getSeries().getItem(1).setText("Thiếu");
+
+      chart1.getSeries().getItem(2).setColor('#E83A3B'); // thua (do)
+      chart1.getSeries().getItem(2).setText("Thừa");      
+
+      var axis;
+      axis = chart1.getAxisX();
+      axis.getLabels().setItem(0, "Tổng NL");
+      axis.getLabels().setItem(1, "Đạm");
+      axis.getLabels().setItem(2, "Đường");
+      axis.getLabels().setItem(3, "Béo");
+
+      chart1.getAllSeries().getPointLabels().setVisible(true);
+      chart1.getAllSeries().setStacked(cfx.Stacked.Normal);
+      chart1.getAllSeries().setBarShape(cfx.BarShape.Cylinder);
+      chart1.getAllSeries().setVolume(50);
+      chart1.getView3D().setEnabled(true);
+      chart1.getView3D().setAngleX(20);
+      chart1.getView3D().setAngleY(0);
+      
+      // set max
+      if ($scope.result.energy.nangluong > $scope.level.nangluong.standardEnergy) {
+        chart1.getAxisY().setMax($scope.result.energy.nangluong + 500);
+      } else {
+        chart1.getAxisY().setMax($scope.level.nangluong.standardEnergy + 500);
+      }
+
+      chart1.getLegendBox().setDock(cfx.DockArea.Right);
+
+      var chartDiv = document.getElementById('divForGraph');
+      chart1.create(chartDiv);
+      $('svg#C1s g').remove();
+    };
+
     $scope.customer = NutrientService.getCustomer();
     $scope.menu = NutrientService.getMenu();
     $scope.result = NutrientService.analyseNutrition($scope.menu);
@@ -218,76 +299,6 @@ angular.module('nutrientApp')
     $scope.level.duong = identifyDetailLevel('duong');
     $scope.level.beo = identifyDetailLevel('beo');
     
-    var enGraphData = calculateGraphData($scope.result.energy.nangluong, 
-                                         $scope.level.nangluong.standardEnergy);
-    var damGraphData = calculateGraphData($scope.result.energy.dam, 
-                                          calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['dam'].minValue), 
-                                          calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['dam'].maxValue));
-    var duongGraphData = calculateGraphData($scope.result.energy.duong, 
-                                            calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['duong'].minValue), 
-                                            calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['duong'].maxValue));
-    var beoGraphData = calculateGraphData($scope.result.energy.beo, 
-                                          calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['beo'].minValue), 
-                                          calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['beo'].maxValue));
-    // draw graph
-    var fillStyle = {
-                type: 'linearGradient',
-                x0: 0,
-                y0: 0,
-                x1: 1,
-                y1: 0,
-                colorStops: [{ offset: 0, color: '#65c2e8' },
-                             { offset: 0.49, color: '#55b3e1' },
-                             { offset: 0.5, color: '#3ba6dc' },
-                             { offset: 1, color: '#2794d4'}]
-            };
-
-    $('#divForGraph').jqChart({
-                title: { text: '' },
-                animation: { duration: 1 },
-                shadows: {
-                    enabled: true
-                },
-                axes: [
-                         {
-                             type: 'category',
-                             location: 'bottom',
-                             categories: ['Tổng Năng Lượng', 'Đạm', 'Đường', 'Béo']
-                         }                         
-                      ],
-                series: [
-                            {
-                                type: 'stackedColumn',
-                                title: 'Thực Tế',
-                                data: [rnd(enGraphData[0]), rnd(damGraphData[0]), rnd(duongGraphData[0]), rnd(beoGraphData[0])],
-                                labels: { 
-                                  font: '12px sans-serif'
-                                }
-                            },
-                            {
-                                type: 'stackedColumn',
-                                title: 'Thiếu',
-                                data: [rnd(enGraphData[1]), rnd(damGraphData[1]), rnd(duongGraphData[1]), rnd(beoGraphData[1])],
-                                labels: { font: '12px sans-serif' }
-                            },
-                            {
-                                type: 'stackedColumn',
-                                title: 'Thừa',
-                                data: [rnd(enGraphData[2]), rnd(damGraphData[2]), rnd(duongGraphData[2]), rnd(beoGraphData[2])],
-                                labels: { font: '12px sans-serif' }
-                            }
-                        ],
-                paletteColors: {
-                  type: 'customColors',
-                  customColors: ['#00FF00', '#FFFF00', '#FF0000']
-                },
-                border: {
-                    cornerRadius: 20,
-                    lineWidth: 0,
-                    strokeStyle: '#6ba851'
-                },
-              fillStyle: fillStyle
-              
-            });
+    loadChart();
 
   });

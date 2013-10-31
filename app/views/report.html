@@ -36,9 +36,9 @@
 
 <div>
   <div class="groupHeader">Phân tích năng lượng:</div>
-  <span class="xLabel">Kcal</span>
+  
   <div class="clear"></div>
-  <div id="divForGraph" style="width: 490px; height: 250px; display: inline-block"></div>
+  <div id="divForGraph" style="width: 490px; height: 300px; display: inline-block"><span class="xLabel">Kcal</span></div>
   <div class="bosung">
     <div class="instruction">Bổ sung dinh dưỡng đường uống:</div>
     <div><i>Bạn cần uống thêm <span style="font-size:14pt; color:red;">{{numOfGlasses.length}}</span> ly <img src="images/ensure.png" style="vertical-align: middle;"/> mỗi ngày</i></div>
@@ -56,41 +56,25 @@
     <table cellpadding="0" cellspacing="0">
       <thead>
           <tr>        
-            <th colspan="2" class="col fontTitle">Đánh giá</th>
+            <th class="col fontTitle">Đánh giá</th>
+            <th class="col fontTitle">Khuyến nghị</th>
           </tr>
       </thead>
-      <tr class="commentBox">
-          <td>{{level.nangluong.evaluate}}</td>
+      <tr class="commentBox" >
+          <td>- {{level.nangluong.evaluate}}</td>
+          <td>- {{level.nangluong.recommend}}</td>
       </tr>
-      <tr class="commentBox">
-          <td>{{level.dam.evaluate}}</td>
+      <tr class="commentBox" ng-show="level.dam.evaluate">
+          <td>- {{level.dam.evaluate}}</td>
+          <td>- {{level.dam.recommend}}</td>
       </tr>
-      <tr class="commentBox">
-          <td>{{level.duong.evaluate}}</td>
+      <tr class="commentBox" ng-show="level.duong.evaluate">
+          <td>- {{level.duong.evaluate}}</td>
+          <td>- {{level.duong.recommend}}</td>
       </tr>
-      <tr class="commentBox">
-          <td>{{level.beo.evaluate}}</td>
-      </tr>
-    </table>
-  </div>
-  <div class="commentBox2">
-    <table cellpadding="0" cellspacing="0">
-      <thead>
-          <tr>        
-            <th colspan="2" class="col fontTitle">Khuyến nghị</th>
-          </tr>
-      </thead>
-      <tr class="commentBox">
-          <td>{{level.nangluong.recommend}}</td>
-      </tr>
-      <tr class="commentBox">
-          <td>{{level.dam.recommend}}</td>
-      </tr>
-      <tr class="commentBox">
-          <td>{{level.duong.recommend}}</td>
-      </tr>
-      <tr class="commentBox">
-          <td>{{level.beo.recommend}}</td>
+      <tr class="commentBox" ng-show="level.beo.evaluate">
+          <td>- {{level.beo.evaluate}}</td>
+          <td>- {{level.beo.recommend}}</td>
       </tr>
     </table>
   </div>
