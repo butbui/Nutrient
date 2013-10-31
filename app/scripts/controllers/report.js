@@ -43,53 +43,53 @@ angular.module('nutrientApp')
     EVALUATE_DETAIL.dam = {
       'less': {
         description: 'Thiếu',
-        evaluate: '% năng lượng đạm cung cấp thiếu. Nguy cơ: Suy dinh dưỡng, phù do giảm đạm máu, teo cơ, loãng xương, suy nhược cơ thể, thiếu máu, vết thương lâu lành',
-        recommend: 'Bổ sung dinh dưỡng theo đường uống với sữa cao năng lượng, giàu đạm kết hợp chế độ ăn giàu thịt, cá, trứng, đậu…'
+        evaluate: 'Đạm cung cấp thiếu. Nguy cơ: Suy dinh dưỡng, phù do giảm đạm máu, teo cơ, loãng xương, suy nhược cơ thể, thiếu máu, vết thương lâu lành.',
+        recommend: 'Bổ sung dinh dưỡng theo đường uống với sữa đầy đủ và cân đối, với đạm chất lượng cao kết hợp chế độ ăn giàu thịt trắng, cá, trứng, đậu…'
       },
       'enough': {
         description: 'Đủ',
-        evaluate: '% năng lượng đạm cung cấp đạt',
-        recommend: 'Tiếp tục duy trì. Kết hợp uống bồ sung 1- 2 ly sữa /ngày'
+        evaluate: '',
+        recommend: ''
       },
       'over': {
         description: 'Thừa',
-        evaluate: '% năng lượng đạm trên 15% tổng năng lượng nhu cầu theo khuyến nghị. Nguy cơ: Thừa cân, cholesterol máu cao, bệnh tim mạch, loãng xương, bệnh thận, gút',
-        recommend: 'Giảm bớt các thức ăn giàu đạm như thịt bò, các lọai thịt trắng như cá phi lê, trứng, đậu hũ, các lọai đậu'
+        evaluate: 'Đạm cung cấp vượt nhu cầu theo khuyến nghị. Nguy cơ: Thừa cân, cholesterol máu cao, bệnh tim mạch, loãng xương, bệnh thận, gút.',
+        recommend: 'Giảm bớt các thức ăn giàu đạm như thịt bò, các lọai thịt trắng như cá phi lê, trứng, đậu hũ, các lọai đậu.'
       }
     };
 
     EVALUATE_DETAIL.duong = {
       'less': {
         description: 'Thiếu',
-        evaluate: '% năng lượng đường cung cấp dưới 55% tổng năng lượng nhu cầu theo khuyến nghị. Nguy cơ: Thiếu năng lượng, suy dinh dưỡng',
-        recommend: 'Bổ sung dinh dưỡng theo đường uống, kết hợp ăn thêm tinh bột, các lọai ngũ cốc (cơm, khoai, mì, bắp, bún…), trái cây ngọt'
+        evaluate: 'Đường cung cấp thiếu. Nguy cơ: Thiếu năng lượng, suy dinh dưỡng.',
+        recommend: 'Bổ sung dinh dưỡng theo đường uống, kết hợp ăn thêm tinh bột, các lọai ngũ cốc (cơm, khoai, mì, bắp, bún…), trái cây ngọt.'
       },
       'enough': {
         description: 'Đủ',
-        evaluate: '% năng lượng đường cung cấp đạt 55-60% tổng năng lượng nhu cầu theo khuyến nghị',
-        recommend: 'Tiếp tục duy trì. Kết hợp uống bồ sung 1- 2 ly sữa /ngày.'
+        evaluate: '',
+        recommend: ''
       },
       'over': {
         description: 'Thừa',
-        evaluate: '% năng lượng đường cung cấp trên 60% tổng năng lượng nhu cầu theo khuyến nghị.  Nguy cơ: Thừa cân, béo phì và các biến chứng của thừa cân, béo phì, gan nhiễm mỡ, tăng triglyceride máu, đái tháo đường type 2…',
-        recommend: 'Giảm bớt tinh bột (cơm, xôi, bánh mì…), các lọai bánh kẹo ngọt, trái cây ngọt'
+        evaluate: 'Đường cung cấp vượt nhu cầu khuyến nghị.  Nguy cơ: Thừa cân, béo phì và các biến chứng của thừa cân, béo phì, gan nhiễm mỡ, tăng triglyceride máu, đái tháo đường type 2…',
+        recommend: 'Giảm bớt tinh bột (cơm, xôi, bánh mì…), các lọai bánh kẹo ngọt, trái cây ngọt.'
       }
     };
 
     EVALUATE_DETAIL.beo = {
       'less': {
         description: 'Thiếu',
-        evaluate: '% năng lượng béo  cung cấp dưới 20% tổng năng lượng nhu cầu theo khuyến nghị. Nguy cơ: Thiếu năng lượng, suy dinh dưỡng, thành mạch không bền (xuất huyết thành mạch, xuất huyết não), thiếu vitamin, suy nhược cơ thể, ung thư',
+        evaluate: 'Cung cấp thiếu chất béo. Nguy cơ: Thiếu năng lượng, suy dinh dưỡng, thành mạch không bền (xuất huyết thành mạch, xuất huyết não), thiếu vitamin, suy nhược cơ thể, ung thư.',
         recommend: 'Bổ sung dinh dưỡng theo đường uống, kết hợp dùng thêm dầu thực vật trong chế biến món ăn, dùng các lọai cá béo chứa omega 3, các lọai hạt có dầu…'
       },
       'enough': {
         description: 'Đủ',
-        evaluate: '% năng lượng béo  cung cấp Đạt 20-25% tổng năng lượng nhu cầu theo khuyến nghị',
-        recommend: 'Tiếp tục duy trì. Kết hợp uống bồ sung 1- 2 ly sữa /ngày'
+        evaluate: '',
+        recommend: ''
       },
       'over': {
         description: 'Thừa',
-        evaluate: '% năng lượng béo  cung cấp trên 25% tổng năng lượng nhu cầu theo khuyến nghị.Nguy cơ: Thừa năng lượng, thừa cân, béo phì, xơ vữa động mạch, tăng mỡ máu, mỡ nội tạng, bệnh tim mạch, nhồi máu não…',
+        evaluate: 'Chất béo cung cấp vượt nhu cầu khuyến nghị. Nguy cơ: Thừa năng lượng, thừa cân, béo phì, xơ vữa động mạch, tăng mỡ máu, mỡ nội tạng, bệnh tim mạch, nhồi máu não…',
         recommend: 'Hạn chế các chất béo xấu (mỡ động vật, nội tạng, da, nước hầm xương…), thức ăn chứa transfat (thức ăn dùng dầu chiên lại nhiều lần), hạn chế chiên xào, nên ăn thức ăn hấp luộc, hạn chế thức ăn nhanh (fastfood)…'
       }
     };
@@ -156,36 +156,17 @@ angular.module('nutrientApp')
               evaluate: EVALUATE_ENERGY[level].evaluate, 
               recommend: EVALUATE_ENERGY[level].recommend};
     };
-/*
-    function calculateGraphData(actualEnergy, standardEnergyMin, standardEnergyMax) {
+
+    function calculateGraphData(actualEnergy, standardEnergyMin, standardEnergyMax) {            
+      console.log("actualEnergy = " + actualEnergy + ", standardEnergyMin=" + standardEnergyMin + ", standardEnergyMax=" + standardEnergyMax);
+
       var rs = [0, 0, 0];
       if (standardEnergyMax === undefined || standardEnergyMax === null) {
         standardEnergyMax = standardEnergyMin;
       }
 
       if (actualEnergy < standardEnergyMin) { // less
-
-          rs = [Math.round(actualEnergy), Math.round(standardEnergyMin - actualEnergy), 0];
-
-      } else if (actualEnergy > standardEnergyMax) { // more
-        rs = [Math.round(standardEnergyMax), 0, Math.round(actualEnergy - standardEnergyMax)];
-      } else { // enough
-        rs = [Math.round(actualEnergy), 0, 0];
-      }
-      return rs;
-    };
-*/
-
-    function calculateGraphData(actualEnergy, standardEnergyMin, standardEnergyMax) {
-      var rs = [0, 0, 0];
-      if (standardEnergyMax === undefined || standardEnergyMax === null) {
-        standardEnergyMax = standardEnergyMin;
-      }
-
-      if (actualEnergy < standardEnergyMin) { // less
-
           rs = [actualEnergy, (standardEnergyMin - actualEnergy), 0];
-
       } else if (actualEnergy > standardEnergyMax) { // more
         rs = [standardEnergyMax, 0, (actualEnergy - standardEnergyMax)];
       } else { // enough
@@ -193,14 +174,21 @@ angular.module('nutrientApp')
       }
       return rs;
     };
+
     function calculateStandardKcal(totalEnergy, percentage) {
       return ((totalEnergy * percentage) / 100);
     }
+  
+    function rnd(num) {
+      var rs = 0;
+      if (!isNaN(num) && num != 0) {
+        rs = num.toFixed(1);
+      }
+      return parseFloat(rs);
+    }  
 
     function getNumOfGlasses(actualEnergy, standardEnergy) {
       var num = 1;
-      console.log("actualEnergy " + actualEnergy);
-      console.log("standardEnergy " + standardEnergy);
 
       if (standardEnergy - actualEnergy <= 250) {
         num = 1;
@@ -215,7 +203,6 @@ angular.module('nutrientApp')
       } else {
         num = 6;
       }
-
       return new Array(num);
     }
 
@@ -243,23 +230,64 @@ angular.module('nutrientApp')
                                           calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['beo'].minValue), 
                                           calculateStandardKcal($scope.level.nangluong.standardEnergy, STANDARD_DETAIL['beo'].maxValue));
     // draw graph
-    var arrayOfData = new Array(
-        [enGraphData,'Tổng Năng Lượng'],
-        [damGraphData,'Đạm'],
-        [duongGraphData,'Đường	'],
-        [beoGraphData,'Béo']
-    );
-    $('#divForGraph').jqBarGraph({ 
-      data: arrayOfData,
-      colors: ['green','yellow','red'],
-      legends: ['Thực Tế', 'Thiếu', 'Thừa'],
-      legend: true,
-      width: 450,
-      height: 250,
-      barSpace: 50,
-      showValuesColor: '#000'
-    });
+    var fillStyle = {
+                type: 'linearGradient',
+                x0: 0,
+                y0: 0,
+                x1: 1,
+                y1: 0,
+                colorStops: [{ offset: 0, color: '#65c2e8' },
+                             { offset: 0.49, color: '#55b3e1' },
+                             { offset: 0.5, color: '#3ba6dc' },
+                             { offset: 1, color: '#2794d4'}]
+            };
 
-    $('#divForGraph').find('div.subBarsdivForGraph:contains("0")').filter(function() {return $(this).text() == '0.0'}).remove();
-  
+    $('#divForGraph').jqChart({
+                title: { text: '' },
+                animation: { duration: 1 },
+                shadows: {
+                    enabled: true
+                },
+                axes: [
+                         {
+                             type: 'category',
+                             location: 'bottom',
+                             categories: ['Tổng Năng Lượng', 'Đạm', 'Đường', 'Béo']
+                         }                         
+                      ],
+                series: [
+                            {
+                                type: 'stackedColumn',
+                                title: 'Thực Tế',
+                                data: [rnd(enGraphData[0]), rnd(damGraphData[0]), rnd(duongGraphData[0]), rnd(beoGraphData[0])],
+                                labels: { 
+                                  font: '12px sans-serif'
+                                }
+                            },
+                            {
+                                type: 'stackedColumn',
+                                title: 'Thiếu',
+                                data: [rnd(enGraphData[1]), rnd(damGraphData[1]), rnd(duongGraphData[1]), rnd(beoGraphData[1])],
+                                labels: { font: '12px sans-serif' }
+                            },
+                            {
+                                type: 'stackedColumn',
+                                title: 'Thừa',
+                                data: [rnd(enGraphData[2]), rnd(damGraphData[2]), rnd(duongGraphData[2]), rnd(beoGraphData[2])],
+                                labels: { font: '12px sans-serif' }
+                            }
+                        ],
+                paletteColors: {
+                  type: 'customColors',
+                  customColors: ['#00FF00', '#FFFF00', '#FF0000']
+                },
+                border: {
+                    cornerRadius: 20,
+                    lineWidth: 0,
+                    strokeStyle: '#6ba851'
+                },
+              fillStyle: fillStyle
+              
+            });
+
   });

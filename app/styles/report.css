@@ -68,12 +68,12 @@
   height: 20px;
   width: 793;
   padding: 2px 0 2px 5px;
-  margin: 10px 2px 2px 2px;  
+  margin: 2px;  
   color: #104684;
 }
 
 .commentBox {
-  height: 120px;
+  height: 45px;
   font-size: 7pt;
 }
 
@@ -102,9 +102,10 @@
   margin-left: 10px;
   margin-top: 5px;
   float: left;
+  border: 1px solid grey;
 }
 .commentBox2 th, .commentBox2 td{
-  border: 1px solid grey;
+  
   
 }
 .commentBox2 th {
@@ -131,18 +132,23 @@
 }
 
 #divForGraph {
-  margin-bottom: 20px;
   float: left;
+  width: 450px;
+  height: 230px;
 }
 
 .graphLabeldivForGraph{
   position: absolute;
   width: 150px;
   left: -50px;
+  border-top: solid 1px;
+  padding-top: 10px;
 }
 
 .subBarsdivForGraph {
   font-weight: bold;
+  border: solid 1px;
+  background: linear-gradient(to bottom right, red, #6a942f);
 }
 
 #legendHolder3divForGraph {
@@ -159,5 +165,11 @@
   font-weight: bold;
   font-size: 14px;
   font-style: italic;
+}
+
+.xLabel {
+  margin-left: 20px;
+  margin-bottom: 0px;
+  z-index: 100;
 }
 

@@ -36,10 +36,12 @@
 
 <div>
   <div class="groupHeader">Phân tích năng lượng:</div>
-  <div id="divForGraph"></div>
+  <span class="xLabel">Kcal</span>
+  <div class="clear"></div>
+  <div id="divForGraph" style="width: 490px; height: 250px; display: inline-block"></div>
   <div class="bosung">
     <div class="instruction">Bổ sung dinh dưỡng đường uống:</div>
-    <div><i>Bạn cần uống thêm <span style="font-size:14pt">{{numOfGlasses.length}}</span> ly <img src="images/ensure.png" style="vertical-align: middle;"/> mỗi ngày</i></div>
+    <div><i>Bạn cần uống thêm <span style="font-size:14pt; color:red;">{{numOfGlasses.length}}</span> ly <img src="images/ensure.png" style="vertical-align: middle;"/> mỗi ngày</i></div>
     <div style="width: 200px" >
       <img ng-repeat="glass in numOfGlasses" src="images/milk.png" style="float:left; width: 55px"/>
       <div class="clear"></div>
@@ -49,7 +51,7 @@
 <div class="clear"></div>
 
 <div>
-  <div class="groupHeader">Đề xuất:</div>
+  <div class="groupHeader">Đề xuất:</div>  
   <div class="commentBox2">
     <table cellpadding="0" cellspacing="0">
       <thead>
@@ -58,7 +60,16 @@
           </tr>
       </thead>
       <tr class="commentBox">
-          <td></td>
+          <td>{{level.nangluong.evaluate}}</td>
+      </tr>
+      <tr class="commentBox">
+          <td>{{level.dam.evaluate}}</td>
+      </tr>
+      <tr class="commentBox">
+          <td>{{level.duong.evaluate}}</td>
+      </tr>
+      <tr class="commentBox">
+          <td>{{level.beo.evaluate}}</td>
       </tr>
     </table>
   </div>
@@ -70,10 +81,18 @@
           </tr>
       </thead>
       <tr class="commentBox">
-          <td></td>
+          <td>{{level.nangluong.recommend}}</td>
+      </tr>
+      <tr class="commentBox">
+          <td>{{level.dam.recommend}}</td>
+      </tr>
+      <tr class="commentBox">
+          <td>{{level.duong.recommend}}</td>
+      </tr>
+      <tr class="commentBox">
+          <td>{{level.beo.recommend}}</td>
       </tr>
     </table>
   </div>
 </div>
 <div class="clear"></div>
-
