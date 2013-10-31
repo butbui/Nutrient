@@ -157,7 +157,11 @@
 
 .bosung {
   float: right;
-  margin: 10px;
+  margin: 5px;
+}
+
+.numclass4 {
+  width: 200px;
 }
 
 .instruction {
