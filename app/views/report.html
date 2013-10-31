@@ -38,11 +38,19 @@
   <div class="groupHeader">Phân tích năng lượng:</div>
   
   <div class="clear"></div>
-  <div id="divForGraph" style="width: 490px; height: 300px; display: inline-block"><span class="xLabel">Kcal</span></div>
+  <div id="divForGraph" style="width: 490px; height: 300px; display: inline-block">
+    <span class="yLabel">Kcal</span>
+    <span class="xLabel">
+      <span class="nl">Tổng Năng Lượng</span>
+      <span class="dam">Đạm</span>
+      <span class="duong">Đường</span>
+      <span class="beo">Béo</span>
+    </span>
+  </div>
   <div class="bosung">
     <div class="instruction">Bổ sung dinh dưỡng đường uống:</div>
-    <div><i>Bạn cần uống thêm <span style="font-size:14pt; color:red;">{{numOfGlasses.length}}</span> ly <img src="images/ensure.png" style="vertical-align: middle;"/> mỗi ngày</i></div>
-    <div style="width: 200px" >
+    <div style="font-weight: bold"><i>Bạn cần uống thêm <span style="font-size:14pt; color:red;">{{numOfGlasses.length}}</span> <span style="font-size:12pt;">ly</span> <img src="images/ensure.png" style="vertical-align: middle;"/> mỗi ngày</i></div>
+    <div ng-class="{numclass4: numOfGlasses.length > 4}" style="display: table;margin: 0 auto;" >
       <img ng-repeat="glass in numOfGlasses" src="images/milk.png" style="float:left; width: 55px"/>
       <div class="clear"></div>
     </div>

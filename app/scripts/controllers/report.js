@@ -251,21 +251,33 @@ angular.module('nutrientApp')
 
       chart1.getSeries().getItem(0).setColor('#108F1A'); // thuc te (xanh)
       chart1.getSeries().getItem(0).setText("Thực Tế");
+      var point0 = chart1.getSeries().getItem(0).getPointLabels();
+      point0.setLineAlignment(cfx.StringAlignment.Center);
+      point0.setTextColor("#000000");
 
       chart1.getSeries().getItem(1).setColor('#FFF035'); // thieu (vang)
       chart1.getSeries().getItem(1).setText("Thiếu");
+      // point 1 (thieu)
+      var point1 = chart1.getSeries().getItem(1).getPointLabels();
+      point1.setTextColor("#000000");
+      point1.setLineAlignment(cfx.StringAlignment.Near);
 
       chart1.getSeries().getItem(2).setColor('#E83A3B'); // thua (do)
-      chart1.getSeries().getItem(2).setText("Thừa");      
+      chart1.getSeries().getItem(2).setText("Thừa"); 
+      var point2 = chart1.getSeries().getItem(2).getPointLabels();
+      point2.setLineAlignment(cfx.StringAlignment.Near);
+      point2.setTextColor("#000000");     
 
       var axis;
       axis = chart1.getAxisX();
-      axis.getLabels().setItem(0, "Tổng NL");
-      axis.getLabels().setItem(1, "Đạm");
-      axis.getLabels().setItem(2, "Đường");
-      axis.getLabels().setItem(3, "Béo");
+      axis.getLabels().setItem(0, "");
+      axis.getLabels().setItem(1, "");
+      axis.getLabels().setItem(2, "");
+      axis.getLabels().setItem(3, "");
+      
+      var pointLabels = chart1.getAllSeries().getPointLabels();
+      pointLabels.setVisible(true);
 
-      chart1.getAllSeries().getPointLabels().setVisible(true);
       chart1.getAllSeries().setStacked(cfx.Stacked.Normal);
       chart1.getAllSeries().setBarShape(cfx.BarShape.Cylinder);
       chart1.getAllSeries().setVolume(50);

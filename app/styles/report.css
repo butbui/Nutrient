@@ -167,10 +167,36 @@
   font-style: italic;
 }
 
-.xLabel {
+.yLabel {
   margin: 15px 0 0 20px;
   z-index: 100;
   position: absolute;
   color: #666666;
 }
 
+.xLabel {
+  margin: 263px 0 0 40px;
+  z-index: 100;
+  position: absolute;
+  color: #0F4784;
+  font-size: 8pt;
+}
+
+.xLabel span {
+  background-color: #D0DAE6;
+  padding: 3px 7px;
+  border-radius: 8px;
+  border: 1px solid #D0DAE6;
+}
+
+.xLabel .dam {
+  margin-left: 8px;
+}
+
+.xLabel .duong {
+  margin-left: 36px; 
+}
+
+.xLabel .beo {
+  margin-left: 40px;
+}
