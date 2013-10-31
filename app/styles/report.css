@@ -157,11 +157,7 @@
 
 .bosung {
   float: right;
-  margin: 5px;
-}
-
-.numclass4 {
-  width: 200px;
+  margin: 10px;
 }
 
 .instruction {
@@ -179,11 +175,11 @@
 }
 
 .xLabel {
-  margin: 263px 0 0 40px;
+  margin: 263px 0 0 35px;
   z-index: 100;
   position: absolute;
   color: #0F4784;
-  font-size: 8pt;
+  font-size: 10px;
 }
 
 .xLabel span {
@@ -198,9 +194,9 @@
 }
 
 .xLabel .duong {
-  margin-left: 36px; 
+  margin-left: 35px; 
 }
 
 .xLabel .beo {
-  margin-left: 40px;
+  margin-left: 35px;
 }
