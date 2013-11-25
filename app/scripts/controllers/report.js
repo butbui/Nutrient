@@ -190,7 +190,17 @@ angular.module('nutrientApp')
     function getNumOfGlasses(actualEnergy, standardEnergy) {
       var num = 1;
 
-      if (standardEnergy - actualEnergy <= 250) {
+      if (actualEnergy >= standardEnergy) {
+        num = 0;
+        // if dam||duong||beo is low
+        if ($scope.level.dam.level === LEVEL[0] ||
+            $scope.level.duong.level === LEVEL[0] ||
+            $scope.level.beo.level === LEVEL[0]) {          
+          $scope.msg = "Bạn cần điều chỉnh lại chế độ ăn cho cân đối đạm, đường, béo và bổ sung thêm 1 ly Ensure Gold mỗi ngày";
+        } else {
+          $scope.msg = "Bạn cần sự hỗ trợ của bác sỹ hay chuyên gia dinh dưỡng để cải thiện sức khỏe dinh dưỡng của bạn";
+        }
+      } else if (standardEnergy - actualEnergy <= 250) {
         num = 1;
       } else if (standardEnergy - actualEnergy <= 500) {
         num = 2;
@@ -253,7 +263,7 @@ angular.module('nutrientApp')
       chart1.getSeries().getItem(0).setText("Thực Tế");
       var point0 = chart1.getSeries().getItem(0).getPointLabels();
       point0.setLineAlignment(cfx.StringAlignment.Center);
-      point0.setTextColor("#000000");
+      point0.setTextColor("#FFFFFF");
 
       chart1.getSeries().getItem(1).setColor('#FFF035'); // thieu (vang)
       chart1.getSeries().getItem(1).setText("Thiếu");
@@ -266,7 +276,7 @@ angular.module('nutrientApp')
       chart1.getSeries().getItem(2).setText("Thừa"); 
       var point2 = chart1.getSeries().getItem(2).getPointLabels();
       point2.setLineAlignment(cfx.StringAlignment.Near);
-      point2.setTextColor("#000000");     
+      point2.setTextColor("#FFFFFF");     
 
       var axis;
       axis = chart1.getAxisX();
@@ -305,11 +315,11 @@ angular.module('nutrientApp')
     // identify level
     $scope.level = {};
     
-    $scope.level.nangluong = identifyEnergyLevel();
-    $scope.numOfGlasses = getNumOfGlasses($scope.result.energy.nangluong, $scope.level.nangluong.standardEnergy);
+    $scope.level.nangluong = identifyEnergyLevel();    
     $scope.level.dam = identifyDetailLevel('dam');
     $scope.level.duong = identifyDetailLevel('duong');
     $scope.level.beo = identifyDetailLevel('beo');
+    $scope.numOfGlasses = getNumOfGlasses($scope.result.energy.nangluong, $scope.level.nangluong.standardEnergy);
     
     loadChart();
 

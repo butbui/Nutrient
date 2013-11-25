@@ -49,10 +49,17 @@
   </div>
   <div class="bosung">
     <div class="instruction">Bổ sung dinh dưỡng đường uống:</div>
-    <div style="font-weight: bold"><i>Bạn cần uống thêm <span style="font-size:14pt; color:red;">{{numOfGlasses.length}}</span> <span style="font-size:12pt;">ly</span> <img src="images/ensure.png" style="vertical-align: middle;"/> mỗi ngày</i></div>
-    <div ng-class="{numclass4: numOfGlasses.length > 4}" style="display: table;margin: 0 auto;" >
-      <img ng-repeat="glass in numOfGlasses" src="images/milk.png" style="float:left; width: 55px"/>
-      <div class="clear"></div>
+    <div ng-switch on="numOfGlasses.length">
+      <div ng-switch-when="0">
+        <div style="">{{msg}}</div>
+      </div>
+      <div ng-switch-default>
+        <div style="font-weight: bold"><i>Bạn cần uống thêm <span style="font-size:14pt; color:red;">{{numOfGlasses.length}}</span> <span style="font-size:12pt;">ly</span> <img src="images/ensure.png" style="vertical-align: middle;"/> mỗi ngày</i></div>
+        <div ng-class="{numclass4: numOfGlasses.length > 4}" style="display: table;margin: 0 auto;" >
+          <img ng-repeat="glass in numOfGlasses" src="images/milk.png" style="float:left; width: 55px"/>
+          <div class="clear"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -88,3 +95,8 @@
   </div>
 </div>
 <div class="clear"></div>
+<div>
+  <div class="groupHeader" style="margin-top: 5px;">Bác sỹ tư vấn:</div>
+    <div class="commentBox3"></div>
+  </div>
+</div>
