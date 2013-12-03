@@ -191,13 +191,14 @@ angular.module('nutrientApp')
       var num = 1;
 
       if (actualEnergy >= standardEnergy) {
-        num = 0;
         // if dam||duong||beo is low
         if ($scope.level.dam.level === LEVEL[0] ||
             $scope.level.duong.level === LEVEL[0] ||
-            $scope.level.beo.level === LEVEL[0]) {          
+            $scope.level.beo.level === LEVEL[0]) {
+          num = 7;        
           $scope.msg = "Bạn cần điều chỉnh lại chế độ ăn cho cân đối đạm, đường, béo và bổ sung thêm 1 ly Ensure Gold mỗi ngày";
         } else {
+          num = 0;
           $scope.msg = "Bạn cần sự hỗ trợ của bác sỹ hay chuyên gia dinh dưỡng để cải thiện sức khỏe dinh dưỡng của bạn";
         }
       } else if (standardEnergy - actualEnergy <= 250) {

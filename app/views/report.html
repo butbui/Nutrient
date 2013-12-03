@@ -51,7 +51,14 @@
     <div class="instruction">Bổ sung dinh dưỡng đường uống:</div>
     <div ng-switch on="numOfGlasses.length">
       <div ng-switch-when="0">
-        <div style="">{{msg}}</div>
+        <div style="font-weight: bold">{{msg}}</div>
+      </div>
+      <div ng-switch-when="7">
+        <div style="font-weight: bold"><i>Bạn cần điều chỉnh lại chế độ ăn cho cân đối đạm, đường, béo và bổ sung thêm <span style="font-size:14pt; color:red;">1</span> <span style="font-size:12pt;">ly</span> <img src="images/ensure.png" style="vertical-align: middle;"/> mỗi ngày</i>
+        <div style="display: table;margin: 0 auto;" >
+          <img src="images/milk.png" style="float:left; width: 55px"/>
+        </div>
+        </div>
       </div>
       <div ng-switch-default>
         <div style="font-weight: bold"><i>Bạn cần uống thêm <span style="font-size:14pt; color:red;">{{numOfGlasses.length}}</span> <span style="font-size:12pt;">ly</span> <img src="images/ensure.png" style="vertical-align: middle;"/> mỗi ngày</i></div>
